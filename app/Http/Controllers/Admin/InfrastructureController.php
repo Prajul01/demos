@@ -1,0 +1,138 @@
+<?php
+
+namespace App\Http\Controllers\Admin;
+
+use App\Http\Controllers\Controller;
+use App\Http\Requests\InfrastructureRequest;
+use App\Models\Infrastructure;
+use Illuminate\Http\Request;
+
+class InfrastructureController extends Controller
+{
+    public function index()
+    {
+        $infrastructure = Infrastructure::all();
+        return response()->json([
+            "success" => true,
+            "message" => "Infrastructure  List",
+            "data" => $infrastructure
+        ]);
+    }
+    public function create()
+    {
+        //
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(InfrastructureRequest $req)
+    {
+
+        $input = $req->all();
+        $date = date('Y-m-d h:i:s');
+        $infrastructure = new Infrastructure();
+        $infrastructure->school = $req->input('school');
+        $infrastructure->account = $req->input('account');
+        $infrastructure->total = $req->input('total');
+        $infrastructure->remark = $req->input('remark');
+        $infrastructure->finacialyear = $req->input('finacialyear');
+        $infrastructure->created_by =  'created_by';
+
+        $infrastructure->created_at = $date;
+//        $infrastructure->updated_at = $date;
+
+
+        $resp = [
+            'success' => false,
+            'message' => 'Save failed'
+        ];
+
+        if($infrastructure->save()){
+            $resp['success'] = true;
+            $resp['message'] = 'Infrastructure Cost saved';
+            $resp['data']=$input;
+            $resp['id']=$infrastructure->id;
+
+
+
+        }else{
+
+
+
+
+
+        }
+
+        return response()->json($resp);
+
+
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        $infrastructure = Infrastructure::findOrFail($id);
+        $response = $infrastructure;
+        return response()->json(["data" => $response]);
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        $infrastructure = Infrastructure::findOrFail($id);
+        $response = $infrastructure;
+        return response()->json(["data" => $response]);
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(InfrastructureRequest $request, $id)
+    {
+
+        $infrastructure=Infrastructure::find($id);
+        $infrastructure->updated_by =  '_by';
+        $infrastructure->update($request->all());
+        return response()->json([
+            "success" => true,
+            "message" => "Infrastructure Cost updated",
+            "data" => $infrastructure
+        ]);
+//
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        $info=Infrastructure::where('id',$id)->get();
+//        $info->delete_flg =  '1';
+        Infrastructure::findOrFail($id)->delete();
+
+
+        return response()->json(["message"=>'Infrastructure  deleted',"data" => $info,"success" => true]);
+
+    }
+}
