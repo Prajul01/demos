@@ -28,4 +28,18 @@ Route::resource('studymaterial',\App\Http\Controllers\Admin\StudyMaterialControl
 Route::resource('administration',\App\Http\Controllers\Admin\AdministrationController::class);
 Route::resource('infrastructure',\App\Http\Controllers\Admin\InfrastructureController::class);
 Route::resource('lunch',\App\Http\Controllers\Admin\LunchController::class);
+Route::resource('employeegrade',\App\Http\Controllers\Admin\EmployeegradeController::class);//not used anywhere
+Route::get('employeegrade_recycle',[\App\Http\Controllers\Admin\EmployeegradeController::class,'recycle']);//test of soft delete
+Route::resource('employeesalaryscale',\App\Http\Controllers\Admin\EmployeeSalaryScaleController::class);
+Route::resource('employeegradelimit',\App\Http\Controllers\Admin\EmployeeGradeLimitController::class);
+Route::resource('employeegradescale',\App\Http\Controllers\Admin\EmployeeGradeScaleController::class);
+Route::resource('employeeAllowanceScale',\App\Http\Controllers\Admin\EmployeeAllowanceScaleController::class);
+Route::resource('lunchScale',\App\Http\Controllers\Admin\LunchScaleController::class);
+Route::resource('scholarshipScale',\App\Http\Controllers\Admin\ScholarshipScaleController::class);
 
+Route::resource('infrastructureScale',\App\Http\Controllers\Admin\InfrastructureScaleController::class);
+Route::resource('administrationScale',\App\Http\Controllers\Admin\AdministrationScaleController::class);
+Route::resource('signature',\App\Http\Controllers\Admin\SignatureController::class);
+Route::resource('salarysheet',\App\Http\Controllers\Admin\SalarySheetController::class);
+Route::resource('fiscalyear',\App\Http\Controllers\Admin\FiscalYearController::class);
+Route::resource('educationyear',\App\Http\Controllers\Admin\EducationYearController::class);

@@ -1,0 +1,129 @@
+<?php
+
+namespace App\Http\Controllers\Admin;
+
+use App\Http\Controllers\Controller;
+use App\Http\Requests\EmployeeGradeLimitRequest;
+use App\Http\Requests\EmployeegradeRequest;
+use App\Models\EmployeeGradeLimit;
+
+use Illuminate\Http\Request;
+
+class EmployeeGradeLimitController extends Controller
+{
+    public function index()
+    {
+        $EmployeeGradeLimit = EmployeeGradeLimit::all();
+        return response()->json([
+            "success" => true,
+            "message" => "EmployeeGradeLimit  List",
+            "data" => $EmployeeGradeLimit
+        ]);
+    }
+    public function create()
+    {
+        //
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(EmployeegradeRequest $req)
+    {
+
+        $input = $req->all();
+        $date = date('Y-m-d h:i:s');
+        $EmployeeGradeLimit = new EmployeeGradeLimit();
+        $EmployeeGradeLimit->level = $req->input('level');
+        $EmployeeGradeLimit->gradelimit = $req->input('gradelimit');
+        $EmployeeGradeLimit->position = $req->input('position');
+        $EmployeeGradeLimit->created_by =  $req->input('created_by');
+        $EmployeeGradeLimit->created_at = $date;
+
+
+        $resp = [
+            'success' => false,
+            'message' => 'Save failed'
+        ];
+
+        if($EmployeeGradeLimit->save()){
+            $resp['success'] = true;
+            $resp['message'] = 'EmployeeGradeLimit  saved';
+            $resp['data']=$input;
+            $resp['id']=$EmployeeGradeLimit->id;
+
+
+
+        }else{  }
+
+        return response()->json($resp);
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        $EmployeeGradeLimit = EmployeeGradeLimit::findOrFail($id);
+        $response = $EmployeeGradeLimit;
+        return response()->json(["data" => $response]);
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        $EmployeeGradeLimit = EmployeeGradeLimit::findOrFail($id);
+        $response = $EmployeeGradeLimit;
+        return response()->json(["data" => $response]);
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(EmployeeGradeLimitRequest $request, $id)
+    {
+
+        $EmployeeGradeLimit=EmployeeGradeLimit::find($id);
+        $EmployeeGradeLimit->updated_by =  '_by';
+        $EmployeeGradeLimit->update($request->all());
+        return response()->json([
+            "success" => true,
+            "message" => "EmployeeGradeLimit  updated",
+            "data" => $EmployeeGradeLimit
+        ]);
+
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        $info=EmployeeGradeLimit::where('id',$id)->get();
+//        $info->delete_flg =  '1';
+        EmployeeGradeLimit::findOrFail($id)->delete();
+
+
+        return response()->json(["message"=>'EmployeeGradeLimit  deleted',"data" => $info,"success" => true]);
+
+    }
+
+}
