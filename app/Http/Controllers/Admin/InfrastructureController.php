@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 
 class InfrastructureController extends Controller
 {
-    public function index()
+    public function list()
     {
         $infrastructure = Infrastructure::all();
         return response()->json([
@@ -78,7 +78,7 @@ class InfrastructureController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function view($id)
     {
         $infrastructure = Infrastructure::findOrFail($id);
         $response = $infrastructure;

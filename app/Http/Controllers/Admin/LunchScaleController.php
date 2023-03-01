@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 
 class LunchScaleController extends Controller
 {
-    public function index()
+    public function list()
     {
         $LunchScale = LunchScale::all();
         return response()->json([
@@ -66,7 +66,7 @@ class LunchScaleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function view($id)
     {
         $LunchScale = LunchScale::findOrFail($id);
         $response = $LunchScale;

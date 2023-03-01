@@ -11,7 +11,7 @@ use Illuminate\Http\Request;
 
 class EmployeeGradeLimitController extends Controller
 {
-    public function index()
+    public function list()
     {
         $EmployeeGradeLimit = EmployeeGradeLimit::all();
         return response()->json([
@@ -68,7 +68,7 @@ class EmployeeGradeLimitController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function view($id)
     {
         $EmployeeGradeLimit = EmployeeGradeLimit::findOrFail($id);
         $response = $EmployeeGradeLimit;

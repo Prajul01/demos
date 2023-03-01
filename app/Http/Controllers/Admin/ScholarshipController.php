@@ -11,7 +11,7 @@ use Illuminate\Http\Request;
 
 class ScholarshipController extends Controller
 {
-    public function index()
+    public function list()
     {
 
 
@@ -21,7 +21,7 @@ class ScholarshipController extends Controller
             "success" => true,
             "message" => "Scholarship List",
             "data" => $scholarship,
-            "id"=>auth()->user()->id
+//            "id"=>auth()->user()->id
         ]);
 
 
@@ -105,7 +105,7 @@ class ScholarshipController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function view($id)
     {
         $scholarship = Scholarship::findOrFail($id);
         $response = $scholarship;

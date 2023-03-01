@@ -9,7 +9,7 @@ use App\Models\EmployeeGradeScale;
 
 class EmployeeGradeScaleController extends Controller
 {
-    public function index()
+    public function list()
     {
         $EmployeeGradeScale = EmployeeGradeScale::all();
         return response()->json([
@@ -67,7 +67,7 @@ class EmployeeGradeScaleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function view($id)
     {
         $EmployeeGradeScale = EmployeeGradeScale::findOrFail($id);
         $response = $EmployeeGradeScale;

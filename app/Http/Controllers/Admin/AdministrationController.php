@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 
 class AdministrationController extends Controller
 {
-    public function index()
+    public function list()
     {
 
 
@@ -89,7 +89,7 @@ class AdministrationController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function view($id)
     {
         $administration = Administration::findOrFail($id);
         $response = $administration;

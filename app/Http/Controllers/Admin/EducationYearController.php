@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 
 class EducationYearController extends Controller
 {
-    public function index()
+    public function list()
     {
         $EducationYear = EducationYear::all();
         return response()->json([
@@ -64,7 +64,7 @@ class EducationYearController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function view($id)
     {
         $EducationYear = EducationYear::findOrFail($id);
         $response = $EducationYear;

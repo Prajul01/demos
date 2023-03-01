@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 
 class InfrastructureScaleController extends Controller
 {
-    public function index()
+    public function list()
     {
         $InfrastructureScale = InfrastructureScale::all();
         return response()->json([
@@ -66,7 +66,7 @@ class InfrastructureScaleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function view($id)
     {
         $InfrastructureScale = InfrastructureScale::findOrFail($id);
         $response = $InfrastructureScale;

@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 
 class AdministrationScaleController extends Controller
 {
-    public function index()
+    public function list()
     {
         $AadministrationScale = AadministrationScale::all();
         return response()->json([
@@ -67,7 +67,7 @@ class AdministrationScaleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function view($id)
     {
         $AadministrationScale = AadministrationScale::findOrFail($id);
         $response = $AadministrationScale;

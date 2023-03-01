@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 
 class EmployeeSalaryScaleController extends Controller
 {
-    public function index()
+    public function list()
     {
         $EmployeeSalaryScale = EmployeeSalaryScale::all();
         return response()->json([
@@ -66,7 +66,7 @@ class EmployeeSalaryScaleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function view($id)
     {
         $EmployeeSalaryScale = EmployeeSalaryScale::findOrFail($id);
         $response = $EmployeeSalaryScale;

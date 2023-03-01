@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 
 class ScholarshipScaleController extends Controller
 {
-    public function index()
+    public function list()
     {
         $ScholarshipScale = ScholarshipScale::all();
         return response()->json([
@@ -66,7 +66,7 @@ class ScholarshipScaleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function view($id)
     {
         $ScholarshipScale = ScholarshipScale::findOrFail($id);
         $response = $ScholarshipScale;

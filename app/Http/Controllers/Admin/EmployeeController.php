@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Auth;
 
 class EmployeeController extends Controller
 {
-    public function index()
+    public function list()
     {
 
 
@@ -103,7 +103,7 @@ class EmployeeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function view($id)
     {
         $emplooyee = Employee::findOrFail($id);
         $response = $emplooyee;

@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 
 class LunchController extends Controller
 {
-    public function index()
+    public function list()
     {
         $Lunch = Lunch::all();
         return response()->json([
@@ -69,7 +69,7 @@ class LunchController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function view($id)
     {
         $Lunch = Lunch::findOrFail($id);
         $response = $Lunch;

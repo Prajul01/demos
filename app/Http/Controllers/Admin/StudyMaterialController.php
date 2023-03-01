@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 
 class StudyMaterialController extends Controller
 {
-    public function index()
+    public function list()
     {
 
 
@@ -94,7 +94,7 @@ class StudyMaterialController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function view($id)
     {
         $scholarship = StudyMaterial::findOrFail($id);
         $response = $scholarship;

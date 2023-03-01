@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 
 class FiscalYearController extends Controller
 {
-    public function index()
+    public function list()
     {
         $FiscalYear = FiscalYear::all();
         return response()->json([
@@ -65,7 +65,7 @@ class FiscalYearController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function view($id)
     {
         $FiscalYear = FiscalYear::findOrFail($id);
         $response = $FiscalYear;
