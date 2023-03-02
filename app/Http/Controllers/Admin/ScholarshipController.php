@@ -132,7 +132,7 @@ class ScholarshipController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(ScholarshipRequest $request, $id)
+    public function update(Request $request, $id)
     {
         $scholarship = Scholarship::findOrFail($id);
 //        school->save()
@@ -162,13 +162,16 @@ class ScholarshipController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy( Request $request,$id)
     {
-        $info=Scholarship::where('id',$id)->get();
-        Scholarship::findOrFail($id)->delete();
-
-
-        return response()->json(["message"=>'Scholarship deleted',"data" => $info,"success" => true]);
-
+        $Signature=Scholarship::find($id);
+        $Signature->delete_flg =  '1';
+        $Signature->update($request->all());
+        $resp = [
+            'success' => True,
+            'message' => 'Data Deleted',
+            'data'=>$Signature,
+        ];
+        return response()->json($resp);
     }
 }

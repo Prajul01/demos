@@ -116,7 +116,7 @@ class AdministrationController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(AdministrationRequest $request, $id)
+    public function update(Request $request, $id)
     {
 
         $administration=Administration::find($id);
@@ -135,13 +135,16 @@ class AdministrationController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy( Request $request,$id)
     {
-        $info=Administration::where('id',$id)->get();
-        Administration::findOrFail($id)->delete();
-
-
-        return response()->json(["message"=>'Administration Cost deleted',"data" => $info,"success" => true]);
-
+        $Signature=Administration::find($id);
+        $Signature->delete_flg =  '1';
+        $Signature->update($request->all());
+        $resp = [
+            'success' => True,
+            'message' => 'Data Deleted',
+            'data'=>$Signature,
+        ];
+        return response()->json($resp);
     }
 }

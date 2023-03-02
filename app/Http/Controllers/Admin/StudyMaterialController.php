@@ -121,7 +121,7 @@ class StudyMaterialController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(StudyMaterialRequest $request, $id)
+    public function update(Request $request, $id)
     {
 
         $scholarship=StudyMaterial::find($id);
@@ -140,13 +140,16 @@ class StudyMaterialController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy( Request $request,$id)
     {
-        $info=StudyMaterial::where('id',$id)->get();
-        StudyMaterial::findOrFail($id)->delete();
-
-
-        return response()->json(["message"=>'StudyMaterial deleted',"data" => $info,"success" => true]);
-
+        $Signature=StudyMaterial::find($id);
+        $Signature->delete_flg =  '1';
+        $Signature->update($request->all());
+        $resp = [
+            'success' => True,
+            'message' => 'Data Deleted',
+            'data'=>$Signature,
+        ];
+        return response()->json($resp);
     }
 }

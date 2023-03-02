@@ -93,7 +93,7 @@ class InfrastructureScaleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(InfrastructureScaleRequest $request, $id)
+    public function update(Request $request, $id)
     {
 
         $InfrastructureScale=InfrastructureScale::find($id);
@@ -113,14 +113,16 @@ class InfrastructureScaleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy( Request $request,$id)
     {
-        $info=InfrastructureScale::where('id',$id)->get();
-//        $info->delete_flg =  '1';
-        InfrastructureScale::findOrFail($id)->delete();
-
-
-        return response()->json(["message"=>'InfrastructureScale  deleted',"data" => $info,"success" => true]);
-
+        $Signature=InfrastructureScale::find($id);
+        $Signature->delete_flg =  '1';
+        $Signature->update($request->all());
+        $resp = [
+            'success' => True,
+            'message' => 'Data Deleted',
+            'data'=>$Signature,
+        ];
+        return response()->json($resp);
     }
 }

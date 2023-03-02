@@ -93,7 +93,7 @@ class EmployeegradeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(EmployeegradeRequest $request, $id)
+    public function update(Request $request, $id)
     {
 
         $Employeegrade=Employeegrade::find($id);
@@ -113,15 +113,17 @@ class EmployeegradeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy( Request $request,$id)
     {
-        $info=Employeegrade::where('id',$id)->get();
-//        $info->delete_flg =  '1';
-        Employeegrade::findOrFail($id)->delete();
-
-
-        return response()->json(["message"=>'Employeegrade  deleted',"data" => $info,"success" => true]);
-
+        $Signature=Employeegrade::find($id);
+        $Signature->delete_flg =  '1';
+        $Signature->update($request->all());
+        $resp = [
+            'success' => True,
+            'message' => 'Data Deleted',
+            'data'=>$Signature,
+        ];
+        return response()->json($resp);
     }
     public function recycle()
     {

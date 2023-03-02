@@ -91,7 +91,7 @@ class EducationYearController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(EducationYearRequest $request, $id)
+    public function update(Request $request, $id)
     {
 
         $EducationYear=EducationYear::find($id);
@@ -111,14 +111,16 @@ class EducationYearController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy( Request $request,$id)
     {
-        $info=EducationYear::where('id',$id)->get();
-//        $info->delete_flg =  '1';
-        EducationYear::findOrFail($id)->delete();
-
-
-        return response()->json(["message"=>'EducationYear  deleted',"data" => $info,"success" => true]);
-
+        $Signature=EducationYear::find($id);
+        $Signature->delete_flg =  '1';
+        $Signature->update($request->all());
+        $resp = [
+            'success' => True,
+            'message' => 'Data Deleted',
+            'data'=>$Signature,
+        ];
+        return response()->json($resp);
     }
 }

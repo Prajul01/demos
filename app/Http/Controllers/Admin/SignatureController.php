@@ -35,9 +35,9 @@ class SignatureController extends Controller
         $input = $req->all();
         $date = date('Y-m-d h:i:s');
         $Signature = new Signature();
-        $Signature->title = $req->input('name');
-        $Signature->class = $req->input('post');
-        $Signature->amount = $req->input('signature');
+        $Signature->name = $req->input('name');
+        $Signature->post = $req->input('post');
+        $Signature->signature = $req->input('signature');
         $Signature->created_by =  $req->input('created_by');
         $Signature->created_at = $date;
 
@@ -93,7 +93,7 @@ class SignatureController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(SignatureRequest $request, $id)
+    public function update(Request $request, $id)
     {
 
         $Signature=Signature::find($id);
@@ -104,23 +104,20 @@ class SignatureController extends Controller
             "message" => "Signature Cost updated",
             "data" => $Signature
         ]);
-//
+
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
+
+    public function destroy( Request $request,$id)
     {
-        $info=Signature::where('id',$id)->get();
-//        $info->delete_flg =  '1';
-        Signature::findOrFail($id)->delete();
-
-
-        return response()->json(["message"=>'Signature  deleted',"data" => $info,"success" => true]);
-
+        $Signature=Signature::find($id);
+        $Signature->delete_flg =  '1';
+        $Signature->update($request->all());
+        $resp = [
+            'success' => True,
+            'message' => 'Data Deleted',
+            'data'=>$Signature,
+        ];
+        return response()->json($resp);
     }
 }

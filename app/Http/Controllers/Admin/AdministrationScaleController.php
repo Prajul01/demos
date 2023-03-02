@@ -94,7 +94,7 @@ class AdministrationScaleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(AdministrationScaleRequest $request, $id)
+    public function update(Request $request, $id)
     {
 
         $AadministrationScale=AadministrationScale::find($id);
@@ -114,14 +114,16 @@ class AdministrationScaleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy( Request $request,$id)
     {
-        $info=AadministrationScale::where('id',$id)->get();
-//        $info->delete_flg =  '1';
-        AadministrationScale::findOrFail($id)->delete();
-
-
-        return response()->json(["message"=>'AadministrationScale  deleted',"data" => $info,"success" => true]);
-
+        $Signature=AadministrationScale::find($id);
+        $Signature->delete_flg =  '1';
+        $Signature->update($request->all());
+        $resp = [
+            'success' => True,
+            'message' => 'Data Deleted',
+            'data'=>$Signature,
+        ];
+        return response()->json($resp);
     }
 }

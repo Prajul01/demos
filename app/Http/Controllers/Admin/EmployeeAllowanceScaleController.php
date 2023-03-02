@@ -93,7 +93,7 @@ class EmployeeAllowanceScaleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(EmployeeAllowanceScaleRequest $request, $id)
+    public function update(Request $request, $id)
     {
 
         $EmployeeAllowanceScale=EmployeeAllowanceScale::find($id);
@@ -113,15 +113,17 @@ class EmployeeAllowanceScaleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy( Request $request,$id)
     {
-        $info=EmployeeAllowanceScale::where('id',$id)->get();
-//        $info->delete_flg =  '1';
-        EmployeeAllowanceScale::findOrFail($id)->delete();
-
-
-        return response()->json(["message"=>'EmployeeAllowanceScale  deleted',"data" => $info,"success" => true]);
-
+        $Signature=EmployeeAllowanceScale::find($id);
+        $Signature->delete_flg =  '1';
+        $Signature->update($request->all());
+        $resp = [
+            'success' => True,
+            'message' => 'Data Deleted',
+            'data'=>$Signature,
+        ];
+        return response()->json($resp);
     }
 
 }

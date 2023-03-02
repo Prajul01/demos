@@ -131,7 +131,7 @@ class SchoolController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(SchoolRequest $request, $id)
+    public function update(Request $request, $id)
     {
         $school = School::findOrFail($id);
 //        school->save()
@@ -161,15 +161,16 @@ class SchoolController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy( Request $request,$id)
     {
-        $info=School::where('id',$id)->get();
-        School::findOrFail($id)->delete();
-
-
-        return response()->json(["message"=>'school deleted',"data" => $info,"success" => true]);
-//        return response()->json(["data" =>
-// ["success" => true]
-//]);
+        $Signature=School::find($id);
+        $Signature->delete_flg =  '1';
+        $Signature->update($request->all());
+        $resp = [
+            'success' => True,
+            'message' => 'Data Deleted',
+            'data'=>$Signature,
+        ];
+        return response()->json($resp);
     }
 }

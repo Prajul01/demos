@@ -94,7 +94,7 @@ class EmployeeGradeScaleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(EmployeeGradeScaleRequest $request, $id)
+    public function update(Request $request, $id)
     {
 
         $EmployeeGradeScale=EmployeeGradeScale::find($id);
@@ -114,14 +114,16 @@ class EmployeeGradeScaleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy( Request $request,$id)
     {
-        $info=EmployeeGradeScale::where('id',$id)->get();
-//        $info->delete_flg =  '1';
-        EmployeeGradeScale::findOrFail($id)->delete();
-
-
-        return response()->json(["message"=>'EmployeeGradeScale  deleted',"data" => $info,"success" => true]);
-
+        $Signature=EmployeeGradeScale::find($id);
+        $Signature->delete_flg =  '1';
+        $Signature->update($request->all());
+        $resp = [
+            'success' => True,
+            'message' => 'Data Deleted',
+            'data'=>$Signature,
+        ];
+        return response()->json($resp);
     }
 }

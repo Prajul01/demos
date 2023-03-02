@@ -93,7 +93,7 @@ class LunchScaleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(LunchScaleRequest $request, $id)
+    public function update(Request $request, $id)
     {
 
         $LunchScale=LunchScale::find($id);
@@ -113,15 +113,17 @@ class LunchScaleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy( Request $request,$id)
     {
-        $info=LunchScale::where('id',$id)->get();
-//        $info->delete_flg =  '1';
-        LunchScale::findOrFail($id)->delete();
-
-
-        return response()->json(["message"=>'LunchScale  deleted',"data" => $info,"success" => true]);
-
+        $Signature=LunchScale::find($id);
+        $Signature->delete_flg =  '1';
+        $Signature->update($request->all());
+        $resp = [
+            'success' => True,
+            'message' => 'Data Deleted',
+            'data'=>$Signature,
+        ];
+        return response()->json($resp);
     }
 
 }

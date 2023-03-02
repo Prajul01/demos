@@ -96,7 +96,7 @@ class LunchController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(LunchRequest $request, $id)
+    public function update(Request $request, $id)
     {
 
         $Lunch=Lunch::find($id);
@@ -116,13 +116,16 @@ class LunchController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy( Request $request,$id)
     {
-        $info=Lunch::where('id',$id)->get();
-        Lunch::findOrFail($id)->delete();
-
-
-        return response()->json(["message"=>'Lunch  deleted',"data" => $info,"success" => true]);
-
+        $Signature=Lunch::find($id);
+        $Signature->delete_flg =  '1';
+        $Signature->update($request->all());
+        $resp = [
+            'success' => True,
+            'message' => 'Data Deleted',
+            'data'=>$Signature,
+        ];
+        return response()->json($resp);
     }
 }

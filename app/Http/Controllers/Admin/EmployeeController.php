@@ -130,7 +130,7 @@ class EmployeeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(EmployeeRequest $request, $id)
+    public function update(Request $request, $id)
     {
         $emplooyee = Employee::findOrFail($id);
 //        school->save()
@@ -160,13 +160,16 @@ class EmployeeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy( Request $request,$id)
     {
-        $info=Employee::where('id',$id)->get();
-        Employee::findOrFail($id)->delete();
-
-
-        return response()->json(["message"=>'Employee deleted',"data" => $info,"success" => true]);
-
+        $Signature=Employee::find($id);
+        $Signature->delete_flg =  '1';
+        $Signature->update($request->all());
+        $resp = [
+            'success' => True,
+            'message' => 'Data Deleted',
+            'data'=>$Signature,
+        ];
+        return response()->json($resp);
     }
 }
