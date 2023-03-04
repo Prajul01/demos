@@ -11,7 +11,7 @@ class EducationYearController extends Controller
 {
     public function list()
     {
-        $EducationYear = EducationYear::all();
+        $EducationYear = EducationYear::where('delete_flg',0)->get();
         return response()->json([
             "success" => true,
             "message" => "EducationYear  List",

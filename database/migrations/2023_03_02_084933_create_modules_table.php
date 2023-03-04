@@ -13,17 +13,16 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('signature', function (Blueprint $table) {
+        Schema::create('modules', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('post');
-            $table->string('signature');
-            $table->string('created_by');
-            $table->string('status');
-            $table->string('updated_by')->nullable();
-            $table->boolean('delete_flg')->default('0');
-            $table->boolean('is_draft')->default('0');
+            $table->string('route');
+            $table->boolean('status')->default(0);
+            $table->unsignedBigInteger('created_by');
+            $table->unsignedBigInteger('updated_by')->nullable();
             $table->timestamps();
+            $table->foreign('created_by')->references('id')->on('users');
+            $table->foreign('updated_by')->references('id')->on('users');
         });
     }
 
@@ -34,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('signature');
+        Schema::dropIfExists('modules');
     }
 };

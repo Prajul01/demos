@@ -12,7 +12,7 @@ class AdministrationScaleController extends Controller
 {
     public function list()
     {
-        $AadministrationScale = AadministrationScale::all();
+        $AadministrationScale = AadministrationScale::where('delete_flg',0)->get();
         return response()->json([
             "success" => true,
             "message" => "AdministrationScale  List",

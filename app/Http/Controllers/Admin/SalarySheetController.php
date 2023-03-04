@@ -11,7 +11,7 @@ class SalarySheetController extends Controller
 {
     public function list()
     {
-        $SalarySheet = SalarySheet::all();
+        $SalarySheet = SalarySheet::where('delete_flg',0)->get();
         return response()->json([
             "success" => true,
             "message" => "SalarySheet  List",

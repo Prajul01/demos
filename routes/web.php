@@ -21,3 +21,6 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::resource('school',\App\Http\Controllers\Admin\SchoolController::class);
+//Route::resource('users', ::class);
+Route::resource('role', \App\Http\Controllers\Admin\RoleController::class);
+Route::resource('permissions', \App\Http\Controllers\Admin\PermissionController::class);

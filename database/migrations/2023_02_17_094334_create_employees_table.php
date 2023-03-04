@@ -22,6 +22,13 @@ return new class extends Migration
             $table->string('post');
             $table->string('grade');
             $table->string('phone');
+            $table->string('gender');
+            $table->boolean('marital_status')->default('0');
+            $table->string('contact_no');
+            $table->string('bank');
+            $table->string('account_no');
+            $table->string('provident_no');
+            $table->string('citizen_inv_no');
             $table->boolean('status')->default('0');
             $table->string('created_by');
             $table->string('updated_by')->nullable();

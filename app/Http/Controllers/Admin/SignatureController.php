@@ -11,7 +11,7 @@ class SignatureController extends Controller
 {
     public function list()
     {
-        $Signature = Signature::all();
+        $Signature = Signature::where('delete_flg',0)->get();
         return response()->json([
             "success" => true,
             "message" => "Signature  List",

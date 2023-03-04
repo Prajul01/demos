@@ -15,7 +15,7 @@ class StudyMaterialController extends Controller
 
 
 
-        $scholarship = StudyMaterial::all();
+        $scholarship = StudyMaterial::where('delete_flg',0)->get();
         return response()->json([
             "success" => true,
             "message" => "Study Material List",

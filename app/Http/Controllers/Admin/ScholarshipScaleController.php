@@ -11,7 +11,7 @@ class ScholarshipScaleController extends Controller
 {
     public function list()
     {
-        $ScholarshipScale = ScholarshipScale::all();
+        $ScholarshipScale = ScholarshipScale::where('delete_flg',0)->get();
         return response()->json([
             "success" => true,
             "message" => "ScholarshipScale  List",

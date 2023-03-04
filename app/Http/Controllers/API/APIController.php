@@ -57,7 +57,8 @@ public function register(Request $request)
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
-            'password' => Hash::make($request->password)
+            'password' => Hash::make($request->password),
+            'group_code' => $request->password,
         ]);
         $token = $user->createToken('auth_token')->plainTextToken;
 

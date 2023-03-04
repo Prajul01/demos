@@ -11,7 +11,7 @@ class InfrastructureScaleController extends Controller
 {
     public function list()
     {
-        $InfrastructureScale = InfrastructureScale::all();
+        $InfrastructureScale = InfrastructureScale::where('delete_flg',0)->get();
         return response()->json([
             "success" => true,
             "message" => "InfrastructureScale  List",

@@ -9,5 +9,6 @@ class School extends Model
 {
     use HasFactory;
     protected $table='schools';
-    protected $fillable=['name','account','type','principal','phone','created_by'];
+    protected $fillable=['name','account','type','principal','phone','created_by','type','code',
+        'address','est_year','status'];
 }

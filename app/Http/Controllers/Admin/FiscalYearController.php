@@ -11,7 +11,7 @@ class FiscalYearController extends Controller
 {
     public function list()
     {
-        $FiscalYear = FiscalYear::all();
+        $FiscalYear = FiscalYear::where('delete_flg',0)->get();
         return response()->json([
             "success" => true,
             "message" => "FiscalYear  List",

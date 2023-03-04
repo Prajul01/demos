@@ -11,7 +11,7 @@ class LunchController extends Controller
 {
     public function list()
     {
-        $Lunch = Lunch::all();
+        $Lunch = Lunch::where('delete_flg',0)->get();
         return response()->json([
             "success" => true,
             "message" => "Lunch  List",

@@ -15,7 +15,7 @@ class EmployeeController extends Controller
 
 
 
-        $emplooyee = Employee::all();
+        $emplooyee = Employee::where('delete_flg',0)->get();
         return response()->json([
             "success" => true,
             "message" => "Employee List",

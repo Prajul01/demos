@@ -13,7 +13,7 @@ class EmployeeGradeLimitController extends Controller
 {
     public function list()
     {
-        $EmployeeGradeLimit = EmployeeGradeLimit::all();
+        $EmployeeGradeLimit = EmployeeGradeLimit::where('delete_flg',0)->get();
         return response()->json([
             "success" => true,
             "message" => "EmployeeGradeLimit  List",

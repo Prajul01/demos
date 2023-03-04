@@ -21,6 +21,10 @@ return new class extends Migration
             $table->string('type');
             $table->string('principal');
             $table->string('phone');
+            $table->string('code');
+            $table->string('address');
+            $table->string('est_year');
+            $table->string('status');
             $table->string('created_by');
             $table->string('updated_by')->nullable();
             $table->boolean('delete_flg')->default('0');

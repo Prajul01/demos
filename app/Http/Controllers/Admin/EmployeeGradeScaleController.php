@@ -11,7 +11,7 @@ class EmployeeGradeScaleController extends Controller
 {
     public function list()
     {
-        $EmployeeGradeScale = EmployeeGradeScale::all();
+        $EmployeeGradeScale = EmployeeGradeScale::where('delete_flg',0)->get();
         return response()->json([
             "success" => true,
             "message" => "EmployeeGradeScale  List",

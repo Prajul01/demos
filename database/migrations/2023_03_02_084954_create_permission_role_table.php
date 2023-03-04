@@ -13,17 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('signature', function (Blueprint $table) {
+        Schema::create('permission_role', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('post');
-            $table->string('signature');
-            $table->string('created_by');
-            $table->string('status');
-            $table->string('updated_by')->nullable();
-            $table->boolean('delete_flg')->default('0');
-            $table->boolean('is_draft')->default('0');
+            $table->unsignedBigInteger('role_id');
+            $table->unsignedBigInteger('permission_id');
             $table->timestamps();
+            $table->foreign('role_id')->references('id')->on('roles');
+            $table->foreign('permission_id')->references('id')->on('permissions');
         });
     }
 
@@ -34,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('signature');
+        Schema::dropIfExists('permission_role');
     }
 };

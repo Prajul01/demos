@@ -11,7 +11,7 @@ class InfrastructureController extends Controller
 {
     public function list()
     {
-        $infrastructure = Infrastructure::all();
+        $infrastructure = Infrastructure::where('delete_flg',0)->get();
         return response()->json([
             "success" => true,
             "message" => "Infrastructure  List",

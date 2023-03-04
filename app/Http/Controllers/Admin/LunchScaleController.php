@@ -11,7 +11,7 @@ class LunchScaleController extends Controller
 {
     public function list()
     {
-        $LunchScale = LunchScale::all();
+        $LunchScale = LunchScale::where('delete_flg',0)->get();
         return response()->json([
             "success" => true,
             "message" => "LunchScale  List",

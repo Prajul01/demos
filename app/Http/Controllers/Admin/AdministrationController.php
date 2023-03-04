@@ -14,7 +14,7 @@ class AdministrationController extends Controller
 
 
 
-        $administration = Administration::all();
+        $administration = Administration::where('delete_flg',0)->get();
         return response()->json([
             "success" => true,
             "message" => "Administration Cost List",
@@ -50,6 +50,7 @@ class AdministrationController extends Controller
         $administration->account = $req->input('account');
         $administration->total = $req->input('total');
         $administration->remark = $req->input('remark');
+        $administration->grade = $req->input('grade');
         $administration->finacialyear = $req->input('finacialyear');
         $administration->created_by =  'created_by';
 

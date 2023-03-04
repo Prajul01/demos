@@ -16,7 +16,7 @@ class ScholarshipController extends Controller
 
 
 
-        $scholarship = Scholarship::all();
+        $scholarship = Scholarship::where('delete_flg',0)->get();
         return response()->json([
             "success" => true,
             "message" => "Scholarship List",

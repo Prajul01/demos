@@ -14,7 +14,8 @@
                         </div>
                     @endif
 
-                    {{ __('You are logged in!') }}
+                    {{ __('You are logged inggg!') }}
+                        <a href="{{route('roles.create')}}">kjhgf</a>
                 </div>
             </div>
         </div>

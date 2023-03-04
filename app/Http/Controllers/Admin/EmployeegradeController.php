@@ -11,7 +11,7 @@ class EmployeegradeController extends Controller
 {
     public function index()
     {
-        $employeegrade = Employeegrade::all();
+        $employeegrade = Employeegrade::where('delete_flg',0)->get();
         return response()->json([
             "success" => true,
             "message" => "Employeegrade  List",

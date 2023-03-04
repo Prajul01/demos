@@ -22,7 +22,7 @@ class SchoolController extends Controller
 
 
 
-        $school = School::all();
+        $school = School::where('delete_flg',0)->get();
         return response()->json([
             "success" => true,
             "message" => "School List",
