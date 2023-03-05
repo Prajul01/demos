@@ -35,7 +35,11 @@ class EducationYearController extends Controller
         $input = $req->all();
         $date = date('Y-m-d h:i:s');
         $EducationYear = new EducationYear();
-        $EducationYear->title = $req->input('name');
+        $EducationYear->name = $req->input('name');
+        $EducationYear->from_date_eng = $req->input('from_date_eng');
+        $EducationYear->to_date_eng = $req->input('to_date_eng');
+        $EducationYear->from_date_nep = $req->input('from_date_nep');
+        $EducationYear->to_date_nep = $req->input('to_date_nep');
         $EducationYear->created_by =  $req->input('created_by');
         $EducationYear->created_at = $date;
 

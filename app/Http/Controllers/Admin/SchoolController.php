@@ -68,6 +68,11 @@ class SchoolController extends Controller
         $school->type = $req->input('type');
         $school->principal = $req->input('principal');
         $school->phone = $req->input('phone');
+        $school->type = $req->input('type');
+        $school->code = $req->input('code');
+        $school->address = $req->input('address');
+        $school->est_year = $req->input('est_year');
+        $school->status = $req->input('status');
         $school->created_by =  'created_by';
 //        $school->created_by = $req->input('created_by');
 

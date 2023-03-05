@@ -27,6 +27,13 @@ class EducationYearRequest extends FormRequest
     {
         return [
             'name'=>'required',
+            'from_date_eng'=>'required',
+            'from_date_nep'=>'required',
+            'to_date_eng'=>'required',
+            'to_date_nep'=>'required',
+            'created_by'=>'required',
+
+
 
         ];
     }

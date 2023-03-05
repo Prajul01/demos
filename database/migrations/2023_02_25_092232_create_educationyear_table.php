@@ -20,7 +20,7 @@ return new class extends Migration
             $table->date('to_date_eng');
             $table->date('from_date_nep');
             $table->date('to_date_nep');
-            $table->date('created_by');
+            $table->string('created_by');
             $table->string('updated_by')->nullable();
             $table->boolean('delete_flg')->default('0');
             $table->boolean('is_draft')->default('0');

@@ -36,6 +36,10 @@ class FiscalYearController extends Controller
         $date = date('Y-m-d h:i:s');
         $FiscalYear = new FiscalYear();
         $FiscalYear->name = $req->input('name');
+        $FiscalYear->from_date_eng = $req->input('from_date_eng');
+        $FiscalYear->to_date_eng = $req->input('to_date_eng');
+        $FiscalYear->from_date_nep = $req->input('from_date_nep');
+        $FiscalYear->to_date_nep = $req->input('to_date_nep');
 
         $FiscalYear->created_by =  $req->input('created_by');
         $FiscalYear->created_at = $date;

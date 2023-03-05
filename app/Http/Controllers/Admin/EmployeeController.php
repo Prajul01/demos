@@ -66,6 +66,14 @@ class EmployeeController extends Controller
         $emplooyee->post = $req->input('post');
         $emplooyee->grade = $req->input('grade');
         $emplooyee->phone = $req->input('phone');
+        $emplooyee->status = $req->input('status');
+        $emplooyee->gender = $req->input('gender');
+        $emplooyee->marital_status = $req->input('marital_status	');
+        $emplooyee->contact_no = $req->input('contact_no	');
+        $emplooyee->bank = $req->input('bank	');
+        $emplooyee->account_no = $req->input('account_no');
+        $emplooyee->provident_no = $req->input('provident_no');
+        $emplooyee->citizen_inv_no = $req->input('citizen_inv_no');
         $emplooyee->created_by =  "admin";
 
         //$emplooyee->created_by = $req->input('created_by');

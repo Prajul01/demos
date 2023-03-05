@@ -44,11 +44,11 @@ Route::post('login', [\App\Http\Controllers\API\APIController::class, 'login']);
 Route::post('register', [\App\Http\Controllers\API\APIController::class, 'register']);
 //Route::post('store', [\App\Http\Controllers\API\APIController::class, 'store']);
 
-Route::get('/employee/list', [EmployeeController::class, 'list']);
-Route::post('/employee/update/{id}', [EmployeeController::class, 'update']);
-Route::get('/employee/view/{id}', [EmployeeController::class, 'view']);
-Route::post('/employee/delete/{id}', [EmployeeController::class, 'destroy']);
-Route::post('/employee/save', [EmployeeController::class, 'store']);
+Route::get('employee/list', [EmployeeController::class, 'list']);
+Route::post('employee/update/{id}', [EmployeeController::class, 'update']);
+Route::get('employee/view/{id}', [EmployeeController::class, 'view']);
+Route::post('employee/delete/{id}', [EmployeeController::class, 'destroy']);
+Route::post('employee/save', [EmployeeController::class, 'store']);
 
 
 Route::get('school/list',[SchoolController::class,'list']);

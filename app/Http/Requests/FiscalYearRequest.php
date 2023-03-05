@@ -27,6 +27,10 @@ class FiscalYearRequest extends FormRequest
     {
         return [
             'name'=>'required',
+            'from_date_eng'=>'required|date',
+            'from_date_nep'=>'required|date',
+            'to_date_eng'=>'required|date',
+            'to_date_nep'=>'required|date',
 
         ];
     }

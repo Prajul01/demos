@@ -28,6 +28,8 @@ class SalarySheetRequest extends FormRequest
         return [
             'fiscalyear'=>'required',
             'month'=>'required',
+            'status'=>'required',
+            'community_teacher'=>'required',
 
             'created_by'=>'required',
         ];

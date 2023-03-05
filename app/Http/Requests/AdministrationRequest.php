@@ -31,6 +31,7 @@ class AdministrationRequest extends FormRequest
             'total'=>'required',
             'remark'=>'required',
             'finacialyear'=>'required',
+            'grade'=>'required',
         ];
     }
     public function failedValidation(Validator $validator)

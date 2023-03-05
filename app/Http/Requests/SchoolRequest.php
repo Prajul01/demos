@@ -25,7 +25,11 @@ class SchoolRequest extends FormRequest
             'account'=>'required',
             'type'=>'required',
             'principal'=>'required',
-            'phone'=>'required'
+            'phone'=>'required',
+            'code'=>'required',
+            'address'=>'required',
+            'est_year'=>'required',
+            'status'=>'required'
 
 
         ];

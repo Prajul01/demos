@@ -33,6 +33,14 @@ class EmployeeRequest extends FormRequest
             'post' => 'required',
             'grade' => 'required',
             'phone' => 'required',
+            'status' => 'required',
+            'gender' => 'required',
+            'marital_status' => 'required',
+            'contact_no' => 'required',
+            'bank' => 'required',
+            'account_no' => 'required',
+            'provident_no' => 'required',
+            'citizen_inv_no' => 'required',
         ];
     }
 
