@@ -10,4 +10,8 @@ class Permission extends Model
     use HasFactory;
     protected $table='permissions';
     protected $fillable=['module_id','route','created_by','status','name'];
+    function role(){
+       return $this->belongsToMany(Role::class);
+
+    }
 }

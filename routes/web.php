@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\RoleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,9 +19,16 @@ Route::get('/', function () {
 });
 
 Auth::routes();
-
+Route::middleware(['role'])->group(function () {
+    Route::resource('role', RoleController::class);
+    Route::resource('module', \App\Http\Controllers\Admin\ModuleController::class);
+    Route::resource('permission', \App\Http\Controllers\Admin\PermissionController::class);
+    Route::resource('users', \App\Http\Controllers\Admin\UserController::class);
+    Route::get('role/assign_permission/{role_id}', [RoleController::class,'assignPermission'])->name('role.assign_permission');
+    Route::post('role/assign_permission', [RoleController::class,'postPermission'])->name('role.post_permission');
+        // Uses first & second middleware...
+});
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::resource('school',\App\Http\Controllers\Admin\SchoolController::class);
 //Route::resource('users', ::class);
-Route::resource('role', \App\Http\Controllers\Admin\RoleController::class);
-Route::resource('permissions', \App\Http\Controllers\Admin\PermissionController::class);
+

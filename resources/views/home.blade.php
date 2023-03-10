@@ -15,7 +15,11 @@
                     @endif
 
                     {{ __('You are logged inggg!') }}
-                        <a href="{{route('roles.create')}}">kjhgf</a>
+                        <a href="{{route('role.create')}}">Role</a>
+                        <a href="{{route('module.create')}}">Module</a>
+                        <a href="{{route('permission.create')}}">Permission</a>
+                        <a href="{{route('users.index')}}">User</a>
+
                 </div>
             </div>
         </div>

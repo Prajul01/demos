@@ -17,10 +17,23 @@ return new class extends Migration
         Schema::create('schools', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('title_nepali')->nullable();
+            $table->string('school_code')->nullable();
+            $table->string('school_email')->nullable();
+            $table->string('ward_no')->nullable();
+            $table->string('class')->nullable();
+            $table->string('enroll_class')->nullable();
+            $table->string('logo')->nullable();
+            $table->string('moto')->nullable();
+            $table->string('tole')->nullable();
+            $table->string('establish_year')->nullable();
             $table->string('account');
             $table->string('type');
             $table->string('principal');
-            $table->string('phone');
+            $table->string('principal_phone')->nullable();
+            $table->string('principal_email')->nullable();
+            $table->string('bank_name')->nullable();
+            $table->string('bank_number')->nullable();
             $table->string('code');
             $table->string('address');
             $table->string('est_year');
