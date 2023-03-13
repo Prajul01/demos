@@ -44,41 +44,32 @@ class EmployeeController extends Controller
     public function store(EmployeeRequest $req)
     {
         $input = $req->all();
-        $req->validate([
 
-            'name' => 'required',
-            'school_name' => 'required',
-            'category' => 'required',
-            'type' => 'required',
-            'post' => 'required',
-            'grade' => 'required',
-            'phone' => 'required',
-//            'created_by'=>'required'
-        ]);
+        $emp=Employee::create($req->all());
 
-        $date = date('Y-m-d h:i:s');
-
-        $emplooyee = new Employee();
-        $emplooyee->name = $req->input('name');
-        $emplooyee->school_name = $req->input('school_name');
-        $emplooyee->category = $req->input('category');
-        $emplooyee->type = $req->input('type');
-        $emplooyee->post = $req->input('post');
-        $emplooyee->grade = $req->input('grade');
-        $emplooyee->phone = $req->input('phone');
-        $emplooyee->status = $req->input('status');
-        $emplooyee->gender = $req->input('gender');
-        $emplooyee->marital_status = $req->input('marital_status	');
-        $emplooyee->contact_no = $req->input('contact_no	');
-        $emplooyee->bank = $req->input('bank	');
-        $emplooyee->account_no = $req->input('account_no');
-        $emplooyee->provident_no = $req->input('provident_no');
-        $emplooyee->citizen_inv_no = $req->input('citizen_inv_no');
-        $emplooyee->created_by =  "admin";
-
-        //$emplooyee->created_by = $req->input('created_by');
-
-        $emplooyee->created_at = $date;
+//        $date = date('Y-m-d h:i:s');
+//
+//        $emplooyee = new Employee();
+//        $emplooyee->name = $req->input('name');
+//        $emplooyee->school_name = $req->input('school_name');
+//        $emplooyee->category = $req->input('category');
+//        $emplooyee->type = $req->input('type');
+//        $emplooyee->post = $req->input('post');
+//        $emplooyee->grade = $req->input('grade');
+//        $emplooyee->phone = $req->input('phone');
+//        $emplooyee->status = $req->input('status');
+//        $emplooyee->gender = $req->input('gender');
+//        $emplooyee->marital_status = $req->input('marital_status	');
+//        $emplooyee->contact_no = $req->input('contact_no	');
+//        $emplooyee->bank = $req->input('bank	');
+//        $emplooyee->account_no = $req->input('account_no');
+//        $emplooyee->provident_no = $req->input('provident_no');
+//        $emplooyee->citizen_inv_no = $req->input('citizen_inv_no');
+//        $emplooyee->created_by =  "admin";
+//
+//        //$emplooyee->created_by = $req->input('created_by');
+//
+//        $emplooyee->created_at = $date;
 
 
         $resp = [
@@ -86,11 +77,11 @@ class EmployeeController extends Controller
             'message' => 'Save failed'
         ];
 
-        if($emplooyee->save()){
+        if($emp->save()){
             $resp['success'] = true;
             $resp['message'] = 'Employyee saved';
-            $resp['data']=$input;
-            $resp['id']=$emplooyee->id;
+            $resp['data']=$emp;
+            //$resp['id']=$emplooyee->id;
 
 
 

@@ -26,21 +26,23 @@ class EmployeeRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required',
-            'school_name' => 'required',
-            'category' => 'required',
-            'type' => 'required',
-            'post' => 'required',
+            'fname_nep' => 'required',
+            'lname_nep' => 'required',
+            'dob'=>'required',
             'grade' => 'required',
-            'phone' => 'required',
+            'position'=>'required',
+            'level'=>'required',
+            'type' => 'required',
+            'category' => 'required',
+
+            'contact_no' => 'required',
+
+            'school_name' => 'required',
+
+
             'status' => 'required',
             'gender' => 'required',
-            'marital_status' => 'required',
-            'contact_no' => 'required',
-            'bank' => 'required',
-            'account_no' => 'required',
-            'provident_no' => 'required',
-            'citizen_inv_no' => 'required',
+
         ];
     }
 

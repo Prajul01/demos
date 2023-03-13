@@ -21,15 +21,19 @@ class SchoolRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'=>'required',
-            'account'=>'required',
-            'type'=>'required',
-            'principal'=>'required',
-            'phone'=>'required',
-            'code'=>'required',
-            'address'=>'required',
-            'est_year'=>'required',
-            'status'=>'required'
+            'school_type'=>'required',
+            'school'=>'required',
+            'principal_name'=>'required',
+            'school_email'=>'required',
+            'school_phone'=>'required',
+            'ward_no'=>'required',
+            'school_level'=>'required',
+            'principal_no'=>'required',
+            'principal_email'=>'required',
+            'created_by'=>'required',
+
+
+
 
 
         ];

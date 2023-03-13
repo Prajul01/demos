@@ -50,34 +50,17 @@ class SchoolController extends Controller
      */
     public function store(SchoolRequest $req)
     {
-        $input = $req->all();
-        $req->validate([
+        $file = $req->file('logo');
+        if ($req->hasFile("logo")) {
+            $fileName = time() . '_' . $file->getClientOriginalName();
+            $file->move(public_path('uploads/images/logo'), $fileName);
+            $req->request->add(['logo' => $fileName]);
+        }
+        $School = new School();
 
-            'name' => 'required',
-            'account' => 'required',
-            'type' => 'required',
-            'principal' => 'required',
-            'phone' => 'required',
-            'created_by'=>'required'
-            ]);
+        $School->logo = $req->input('logo');
 
-        $date = date('Y-m-d h:i:s');
-        $school = new School;
-        $school->name = $req->input('name');
-        $school->account = $req->input('account');
-        $school->type = $req->input('type');
-        $school->principal = $req->input('principal');
-        $school->phone = $req->input('phone');
-        $school->type = $req->input('type');
-        $school->code = $req->input('code');
-        $school->address = $req->input('address');
-        $school->est_year = $req->input('est_year');
-        $school->status = $req->input('status');
-        $school->created_by =  'created_by';
-//        $school->created_by = $req->input('created_by');
-
-        $school->created_at = $date;
-        $school->updated_at = $date;
+        $school=School::create($req->all());
 
         $resp = [
             'success' => false,
@@ -86,12 +69,9 @@ class SchoolController extends Controller
 
         if($school->save()){
             $resp['success'] = true;
-            $resp['message'] = 'User saved';
-            $resp['data']=$input;
-            $resp['id']=$school->id;
-
-
-
+            $resp['message'] = 'School saved';
+            $resp['data']=$school;
+            //$resp['id']=$school->id;
         }else{
 
 
