@@ -48,7 +48,7 @@ class SchoolController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(SchoolRequest $req)
+    public function store(Request $req)
     {
         $file = $req->file('logo');
         if ($req->hasFile("logo")) {
