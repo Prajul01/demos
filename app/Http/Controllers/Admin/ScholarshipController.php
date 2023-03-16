@@ -43,7 +43,7 @@ class ScholarshipController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(ScholarshipRequest $req)
+    public function store(Request $req)
     {
 
         $input = $req->all();
@@ -65,7 +65,7 @@ class ScholarshipController extends Controller
         $scholarship->account = $req->input('account');
         $scholarship->total = $req->input('total');
         $scholarship->remark = $req->input('remark');
-        $scholarship->finacialyear = $req->input('finacialyear');
+        $scholarship->year = $req->input('year');
         $scholarship->created_by =  $req->input('created_by');
 
         $scholarship->created_at = $date;

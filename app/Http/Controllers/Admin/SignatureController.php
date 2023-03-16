@@ -29,7 +29,7 @@ class SignatureController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(SignatureRequest $req)
+    public function store(Request $req)
     {
 
         $input = $req->all();

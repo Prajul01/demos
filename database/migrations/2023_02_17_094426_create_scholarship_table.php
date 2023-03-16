@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('account');
             $table->string('total');
             $table->string('remark');
-            $table->string('finacialyear');
+            $table->string('year');
             $table->string('created_by');
             $table->string('updated_by')->nullable();
             $table->boolean('delete_flg')->default('0');

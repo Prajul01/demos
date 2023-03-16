@@ -29,7 +29,7 @@ class LunchScaleController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(LunchScaleRequest $req)
+    public function store(Request $req)
     {
 
         $input = $req->all();

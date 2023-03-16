@@ -29,7 +29,7 @@ class SalarySheetController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(SalarySheetRequest $req)
+    public function store(Request $req)
     {
 
         $input = $req->all();

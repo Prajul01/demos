@@ -30,7 +30,7 @@ class AdministrationScaleController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(AdministrationScaleRequest $req)
+    public function store(Request $req)
     {
 
         $input = $req->all();

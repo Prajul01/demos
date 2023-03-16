@@ -29,7 +29,7 @@ class InfrastructureScaleController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(InfrastructureScaleRequest $req)
+    public function store(Request $req)
     {
 
         $input = $req->all();

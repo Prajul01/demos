@@ -29,7 +29,7 @@ class EmployeeGradeScaleController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(EmployeeGradeScaleRequest $req)
+    public function store(Request $req)
     {
 
         $input = $req->all();
