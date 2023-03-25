@@ -39,7 +39,7 @@ class SalarySheetController extends Controller
         $SalarySheet->month = $req->input('month');
         $SalarySheet->status = $req->input('status');
         $SalarySheet->community_teacher = $req->input('community_teacher');
-        $SalarySheet->created_by =  $req->input('created_by');
+//        $SalarySheet->created_by =  $req->input('created_by');
         $SalarySheet->created_at = $date;
 
 

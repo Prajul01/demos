@@ -38,7 +38,7 @@ return new class extends Migration
             $table->boolean('status')->nullable()->default(0);
             $table->string('created_by')->nullable();
             $table->string('updated_by')->nullable();
-            $table->boolean('delete_flg')->nullable()->default('0');
+            $table->boolean('delete_flg')->default('0');
             $table->boolean('is_draft')->nullable()->default('0');
             $table->timestamps();
         });

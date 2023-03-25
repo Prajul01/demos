@@ -15,6 +15,6 @@ class FiscalYear extends Model
         'from_date_eng',
         'to_date_eng',
         'from_date_nep',
-        'to_date_nep'
+        'to_date_nep','updated_by'
     ];
 }

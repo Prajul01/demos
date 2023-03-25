@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 
 use App\Http\Requests\StudyMaterialRequest;
 use App\Models\StudyMaterial;
+use GuzzleHttp\Promise\Create;
 use Illuminate\Http\Request;
 
 class StudyMaterialController extends Controller
@@ -49,17 +50,20 @@ class StudyMaterialController extends Controller
 
 
 
-        $date = date('Y-m-d h:i:s');
-        $scholarship = new StudyMaterial();
-        $scholarship->school = $req->input('school');
-        $scholarship->account = $req->input('account');
-        $scholarship->total = $req->input('total');
-        $scholarship->remark = $req->input('remark');
-        $scholarship->finacialyear = $req->input('finacialyear');
-        $scholarship->created_by =  'created_by';
+//        $date = date('Y-m-d h:i:s');
+//        $scholarship = new StudyMaterial();
+//        $scholarship->school = $req->input('school');
+//        $scholarship->account = $req->input('account');
+//        $scholarship->total = $req->input('total');
+//        $scholarship->remark = $req->input('remark');
+//        $scholarship->finacialyear = $req->input('finacialyear');
+//        $scholarship->created_by =  'created_by';
+//
+//        $scholarship->created_at = $date;
 
-        $scholarship->created_at = $date;
 //        $scholarship->updated_at = $date;
+        $scholarship=StudyMaterial::create($req->all());
+//        return$scholarship ;
 
 
         $resp = [

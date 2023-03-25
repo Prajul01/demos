@@ -13,14 +13,19 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('administration_scale', function (Blueprint $table) {
+        Schema::create('audit', function (Blueprint $table) {
             $table->id();
-            $table->string('level')->nullable();
-            $table->string('amount')->nullable();
-            $table->string('created_by')->nullable();
+            $table->string('school_name')->nullable();
+            $table->string('magform')->nullable();
+            $table->string('dataentry')->nullable();
+            $table->string('headteacher')->nullable();
+            $table->string('is_aproved')->nullable();
+            $table->string('remark')->nullable();
+            $table->string('form_name')->nullable();
+                  $table->string('created_by')->nullable();
             $table->string('updated_by')->nullable();
             $table->boolean('delete_flg')->nullable()->default('0');
-            $table->boolean('is_draft')->nullable()->default('0');
+            $table->boolean('is_draft')->default('0');
             $table->timestamps();
         });
     }
@@ -32,6 +37,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('administration_scale');
+        Schema::dropIfExists('audit');
     }
 };

@@ -9,5 +9,5 @@ class SalarySheet extends Model
 {
     use HasFactory;
     protected $table='salarysheet';
-    protected $fillable=['fiscalyyear','month','created_by','status','community_teacher','header'];
+    protected $fillable=['fiscalyyear','month','created_by','status','community_teacher','header','updated_by','created_by'];
 }

@@ -9,5 +9,5 @@ class EmployeeAllowanceScale extends Model
 {
     use HasFactory;
     protected $table='employee_allowance_scale';
-    protected $fillable=['level','title','amount','created_by','area'];
+    protected $fillable=['level','title','amount','created_by','area','updated_by','created_by',];
 }

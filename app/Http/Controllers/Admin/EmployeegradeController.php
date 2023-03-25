@@ -38,7 +38,7 @@ class EmployeegradeController extends Controller
         $Employeegrade->level = $req->input('level');
         $Employeegrade->gradelimit = $req->input('gradelimit');
         $Employeegrade->position = $req->input('position');
-        $Employeegrade->created_by =  $req->input('created_by');
+//        $Employeegrade->created_by =  $req->input('created_by');
         $Employeegrade->created_at = $date;
 
 

@@ -45,11 +45,13 @@ class EmployeeController extends Controller
     {
         //$input = $req->all();
 
+//        $req->request->add(['updated_by' => auth()->user()->id]);
         $emp=Employee::create($req->all());
-
         $date = date('Y-m-d h:i:s');
 
+
         $emplooyee = new Employee();
+//        return auth()->user()->name;
         $emplooyee->name = $req->input('name');
         $emplooyee->school_name = $req->input('school_name');
         $emplooyee->category = $req->input('category');
@@ -65,7 +67,7 @@ class EmployeeController extends Controller
         $emplooyee->account_no = $req->input('account_no');
         $emplooyee->provident_no = $req->input('provident_no');
         $emplooyee->citizen_inv_no = $req->input('citizen_inv_no');
-        $emplooyee->created_by =  "admin";
+//        $emplooyee->created_by =  "admin";
 
         //$emplooyee->created_by = $req->input('created_by');
 

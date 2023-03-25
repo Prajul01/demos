@@ -38,7 +38,7 @@ class SignatureController extends Controller
         $Signature->name = $req->input('name');
         $Signature->post = $req->input('post');
         $Signature->signature = $req->input('signature');
-        $Signature->created_by =  $req->input('created_by');
+//        $Signature->created_by =  $req->input('created_by');
         $Signature->created_at = $date;
 
 

@@ -45,6 +45,7 @@ class Employee extends Model
         'status',
         'school_name',
         'created_by',
+        'updated_by',
         'delete_flg',
         'is_draft',
         'contact_no',

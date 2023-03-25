@@ -10,7 +10,7 @@ class Lunch extends Model
     use HasFactory;
     protected $table='lunch';
     protected $fillable=['school','account','total','remark','finacialyear','created_by','total_students'
-        ,'total_attendance','rate','remaining_total',
+        ,'total_attendance','rate','remaining_total','updated_by','created_by'
 
     ];
 }

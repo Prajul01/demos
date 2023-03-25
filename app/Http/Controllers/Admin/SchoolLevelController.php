@@ -3,19 +3,18 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\LunchScaleRequest;
-use App\Models\LunchScale;
+use App\Models\SchoolLevel;
 use Illuminate\Http\Request;
 
-class LunchScaleController extends Controller
+class SchoolLevelController extends Controller
 {
     public function list()
     {
-        $LunchScale = LunchScale::where('delete_flg',0)->get();
+        $SchoolLevel = SchoolLevel::where('delete_flg',0)->get();
         return response()->json([
             "success" => true,
-            "message" => "LunchScale  List",
-            "data" => $LunchScale
+            "message" => "SchoolLevel  List",
+            "data" => $SchoolLevel
         ]);
     }
     public function create()
@@ -26,20 +25,16 @@ class LunchScaleController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request  $req
      * @return \Illuminate\Http\Response
      */
     public function store(Request $req)
     {
 
         $input = $req->all();
-        $date = date('Y-m-d h:i:s');
-        $LunchScale = new LunchScale();
-        $LunchScale->title = $req->input('title');
-        $LunchScale->class = $req->input('class');
-        $LunchScale->amount = $req->input('amount');
-//        $LunchScale->created_by =  $req->input('created_by');
-        $LunchScale->created_at = $date;
+
+        $SchoolLevel = SchoolLevel::create($req->all());
+
 
 
         $resp = [
@@ -47,11 +42,11 @@ class LunchScaleController extends Controller
             'message' => 'Save failed'
         ];
 
-        if($LunchScale->save()){
+        if($SchoolLevel->save()){
             $resp['success'] = true;
-            $resp['message'] = 'LunchScale  saved';
+            $resp['message'] = 'SchoolLevel  saved';
             $resp['data']=$input;
-            $resp['id']=$LunchScale->id;
+            $resp['id']=$SchoolLevel->id;
 
 
 
@@ -68,8 +63,8 @@ class LunchScaleController extends Controller
      */
     public function view($id)
     {
-        $LunchScale = LunchScale::findOrFail($id);
-        $response = $LunchScale;
+        $SchoolLevel = SchoolLevel::findOrFail($id);
+        $response = $SchoolLevel;
         return response()->json(["data" => $response]);
     }
 
@@ -81,28 +76,28 @@ class LunchScaleController extends Controller
      */
     public function edit($id)
     {
-        $LunchScale = LunchScale::findOrFail($id);
-        $response = $LunchScale;
+        $SchoolLevel = SchoolLevel::findOrFail($id);
+        $response = $SchoolLevel;
         return response()->json(["data" => $response]);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request  $req
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $req, $id)
     {
 
-        $LunchScale=LunchScale::find($id);
-        $LunchScale->updated_by =  '_by';
-        $LunchScale->update($request->all());
+        $SchoolLevel=SchoolLevel::find($id);
+        $SchoolLevel->updated_by =  $req->input('updated_by');
+        $SchoolLevel->update($req->all());
         return response()->json([
             "success" => true,
-            "message" => "LunchScale Cost updated",
-            "data" => $LunchScale
+            "message" => "SchoolLevel  updated",
+            "data" => $SchoolLevel
         ]);
 //
     }
@@ -113,17 +108,16 @@ class LunchScaleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy( Request $request,$id)
+    public function destroy( Request $req,$id)
     {
-        $Signature=LunchScale::find($id);
-        $Signature->delete_flg =  '1';
-        $Signature->update($request->all());
+        $SchoolLevel=SchoolLevel::find($id);
+        $SchoolLevel->delete_flg =  '1';
+        $SchoolLevel->update($req->all());
         $resp = [
             'success' => True,
             'message' => 'Data Deleted',
-            'data'=>$Signature,
+            'data'=>$SchoolLevel,
         ];
         return response()->json($resp);
     }
-
 }

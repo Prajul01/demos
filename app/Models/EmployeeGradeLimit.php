@@ -9,5 +9,5 @@ class EmployeeGradeLimit extends Model
 {
     use HasFactory;
     protected $table='employeegradelimit';
-    protected $fillable=['level','gradelimit','position','created_by'];
+    protected $fillable=['level','gradelimit','position','created_by','updated_by'];
 }

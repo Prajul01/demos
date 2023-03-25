@@ -66,10 +66,9 @@ class ScholarshipController extends Controller
         $scholarship->total = $req->input('total');
         $scholarship->remark = $req->input('remark');
         $scholarship->year = $req->input('year');
-        $scholarship->created_by =  $req->input('created_by');
+//        $scholarship->created_by =  $req->input('created_by');
 
         $scholarship->created_at = $date;
-//        $scholarship->updated_at = $date;
 
 
         $resp = [
@@ -80,7 +79,7 @@ class ScholarshipController extends Controller
         if($scholarship->save()){
             $resp['success'] = true;
             $resp['message'] = 'Scholarship saved';
-            $resp['data']=$input;
+            $resp['data']=$scholarship;
             $resp['id']=$scholarship->id;
 
 

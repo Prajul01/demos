@@ -3,19 +3,18 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\LunchScaleRequest;
-use App\Models\LunchScale;
+use App\Models\Audit;
 use Illuminate\Http\Request;
 
-class LunchScaleController extends Controller
+class AuditController extends Controller
 {
     public function list()
     {
-        $LunchScale = LunchScale::where('delete_flg',0)->get();
+        $Audit = Audit::where('delete_flg',0)->get();
         return response()->json([
             "success" => true,
-            "message" => "LunchScale  List",
-            "data" => $LunchScale
+            "message" => "Audit  List",
+            "data" => $Audit
         ]);
     }
     public function create()
@@ -26,20 +25,16 @@ class LunchScaleController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request  $req
      * @return \Illuminate\Http\Response
      */
     public function store(Request $req)
     {
 
         $input = $req->all();
-        $date = date('Y-m-d h:i:s');
-        $LunchScale = new LunchScale();
-        $LunchScale->title = $req->input('title');
-        $LunchScale->class = $req->input('class');
-        $LunchScale->amount = $req->input('amount');
-//        $LunchScale->created_by =  $req->input('created_by');
-        $LunchScale->created_at = $date;
+
+        $Audit = Audit::create($req->all());
+
 
 
         $resp = [
@@ -47,11 +42,11 @@ class LunchScaleController extends Controller
             'message' => 'Save failed'
         ];
 
-        if($LunchScale->save()){
+        if($Audit->save()){
             $resp['success'] = true;
-            $resp['message'] = 'LunchScale  saved';
+            $resp['message'] = 'Audit  saved';
             $resp['data']=$input;
-            $resp['id']=$LunchScale->id;
+            $resp['id']=$Audit->id;
 
 
 
@@ -68,8 +63,8 @@ class LunchScaleController extends Controller
      */
     public function view($id)
     {
-        $LunchScale = LunchScale::findOrFail($id);
-        $response = $LunchScale;
+        $Audit = Audit::findOrFail($id);
+        $response = $Audit;
         return response()->json(["data" => $response]);
     }
 
@@ -81,28 +76,28 @@ class LunchScaleController extends Controller
      */
     public function edit($id)
     {
-        $LunchScale = LunchScale::findOrFail($id);
-        $response = $LunchScale;
+        $Audit = Audit::findOrFail($id);
+        $response = $Audit;
         return response()->json(["data" => $response]);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request  $req
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $req, $id)
     {
 
-        $LunchScale=LunchScale::find($id);
-        $LunchScale->updated_by =  '_by';
-        $LunchScale->update($request->all());
+        $Audit=Audit::find($id);
+        $Audit->updated_by =  $req->input('updated_by');
+        $Audit->update($req->all());
         return response()->json([
             "success" => true,
-            "message" => "LunchScale Cost updated",
-            "data" => $LunchScale
+            "message" => "Audit  updated",
+            "data" => $Audit
         ]);
 //
     }
@@ -113,17 +108,16 @@ class LunchScaleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy( Request $request,$id)
+    public function destroy( Request $req,$id)
     {
-        $Signature=LunchScale::find($id);
-        $Signature->delete_flg =  '1';
-        $Signature->update($request->all());
+        $Audit=Audit::find($id);
+        $Audit->delete_flg =  '1';
+        $Audit->update($req->all());
         $resp = [
             'success' => True,
             'message' => 'Data Deleted',
-            'data'=>$Signature,
+            'data'=>$Audit,
         ];
         return response()->json($resp);
     }
-
 }

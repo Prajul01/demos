@@ -9,5 +9,5 @@ class LunchScale extends Model
 {
     use HasFactory;
     protected $table='lunch_scale';
-    protected $fillable=['title','class','amount','created_by'];
+    protected $fillable=['title','class','amount','created_by','updated_by'];
 }

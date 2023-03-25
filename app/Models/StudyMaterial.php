@@ -9,5 +9,5 @@ class StudyMaterial extends Model
 {
     use HasFactory;
     protected $table='studymaterials';
-    protected $fillable=['school','account','total','remark','finacialyear','created_by','generated_by','state'];
+    protected $fillable=['school','account','total','remark','finacialyear','created_by','generated_by','state','updated_by' ];
 }

@@ -52,10 +52,12 @@ class AdministrationController extends Controller
         $administration->remark = $req->input('remark');
         $administration->grade = $req->input('grade');
         $administration->finacialyear = $req->input('finacialyear');
-        $administration->created_by =  'created_by';
+        $administration->generated_by = $req->input('generated_by');
+        $administration->state = $req->input('state');
+        $administration->finacialyear = $req->input('finacialyear');
+
 
         $administration->created_at = $date;
-//        $administration->updated_at = $date;
 
 
         $resp = [

@@ -9,5 +9,5 @@ class EmployeeSalaryScale extends Model
 {
     use HasFactory;
     protected $table='employee_salary_scale';
-    protected $fillable=['level','position','amount','created_by'];
+    protected $fillable=['level','position','amount','created_by','updated_by'];
 }

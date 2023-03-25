@@ -39,7 +39,7 @@ class EmployeeAllowanceScaleController extends Controller
         $EmployeeAllowanceScale->title = $req->input('title');
         $EmployeeAllowanceScale->amount = $req->input('amount');
         $EmployeeAllowanceScale->area = $req->input('area');
-        $EmployeeAllowanceScale->created_by =  $req->input('created_by');
+//        $EmployeeAllowanceScale->created_by =  $req->input('created_by');
         $EmployeeAllowanceScale->created_at = $date;
 
 

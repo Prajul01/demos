@@ -34,10 +34,11 @@ use App\Http\Controllers\Admin\EducationYearController;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+Route::middleware(['auth:sanctum'])->group(function () {
+//Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+//    Route::post('employee/save', [EmployeeController::class, 'store']);
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-
-    return $request->user();
+//    return $request->user();
 });
 Route::post('store', [\App\Http\Controllers\API\APIController::class, 'store']);
 Route::post('login', [\App\Http\Controllers\API\APIController::class, 'login']);
@@ -45,10 +46,11 @@ Route::post('register', [\App\Http\Controllers\API\APIController::class, 'regist
 //Route::post('store', [\App\Http\Controllers\API\APIController::class, 'store']);
 
 Route::get('employee/list', [EmployeeController::class, 'list']);
+Route::post('employee/save', [EmployeeController::class, 'store']);
 Route::post('employee/update/{id}', [EmployeeController::class, 'update']);
 Route::get('employee/view/{id}', [EmployeeController::class, 'view']);
 Route::post('employee/delete/{id}', [EmployeeController::class, 'destroy']);
-Route::post('employee/save', [EmployeeController::class, 'store']);
+
 
 
 Route::get('school/list',[SchoolController::class,'list']);

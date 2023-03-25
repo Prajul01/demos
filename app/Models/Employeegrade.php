@@ -11,5 +11,5 @@ class Employeegrade extends Model
     use HasFactory;
     use SoftDeletes;
     protected $table='employee_grade';
-    protected $fillable=['level','gradelimit','position','created_by'];
+    protected $fillable=['level','gradelimit','position','updated_by','created_by',];
 }

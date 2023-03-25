@@ -9,5 +9,5 @@ class Signature extends Model
 {
     use HasFactory;
     protected $table='signature';
-    protected $fillable=['name','post','signature','created_by'];
+    protected $fillable=['name','post','signature','created_by','updated_by' ];
 }

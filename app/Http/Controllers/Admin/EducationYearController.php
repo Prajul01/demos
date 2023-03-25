@@ -40,7 +40,7 @@ class EducationYearController extends Controller
         $EducationYear->to_date_eng = $req->input('to_date_eng');
         $EducationYear->from_date_nep = $req->input('from_date_nep');
         $EducationYear->to_date_nep = $req->input('to_date_nep');
-        $EducationYear->created_by =  $req->input('created_by');
+//        $EducationYear->created_by =  $req->input('created_by');
         $EducationYear->created_at = $date;
 
 

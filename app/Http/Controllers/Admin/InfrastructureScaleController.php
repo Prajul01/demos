@@ -38,7 +38,7 @@ class InfrastructureScaleController extends Controller
         $InfrastructureScale->level = $req->input('level');
         $InfrastructureScale->infrastructure = $req->input('infrastructure');
         $InfrastructureScale->amount = $req->input('amount');
-        $InfrastructureScale->created_by =  $req->input('created_by');
+//        $InfrastructureScale->created_by =  $req->input('created_by');
         $InfrastructureScale->created_at = $date;
 
 

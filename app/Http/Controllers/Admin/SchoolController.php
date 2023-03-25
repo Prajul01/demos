@@ -59,6 +59,7 @@ class SchoolController extends Controller
             $req->request->add(['logo' => $fileName]);
         }
         $School = new School();
+//        $req->request->add(['updated_by' => auth()->user()->id]);
 
         $School->logo = $req->input('logo');
         $School->school_type = $req->input('school_type');
@@ -73,16 +74,15 @@ class SchoolController extends Controller
         $School->ward_no = $req->input('ward_no');
         $School->school_level = $req->input('school_level');
         $School->class_eight = $req->input('class_eight');
-        $School->enroll_class = $req->input('enroll_class');
+//        $School->enroll_class = $req->input('enroll_class');
+        $School->enroll_class = json_encode($req->input('enroll_class'));
         $School->principal_no = $req->input('principal_no');
         $School->principal_email = $req->input('principal_email');
         $School->bank_name = $req->input('bank_name');
         $School->account_no = $req->input('account_no');
         $School->status = $req->input('status');
-        $School->status = $req->input('moto');
-        $School->created_by = $req->input('created_by');
-        $School->delete_flg = $req->input('delete_flg');
-        $School->is_draft = $req->input('is_draft');
+        $School->moto = $req->input('moto');
+
         $resp = [
             'success' => false,
             'message' => 'Save failed'

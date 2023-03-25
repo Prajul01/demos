@@ -41,7 +41,7 @@ class FiscalYearController extends Controller
         $FiscalYear->from_date_nep = $req->input('from_date_nep');
         $FiscalYear->to_date_nep = $req->input('to_date_nep');
 
-        $FiscalYear->created_by =  $req->input('created_by');
+//        $FiscalYear->created_by =  $req->input('created_by');
         $FiscalYear->created_at = $date;
 
 

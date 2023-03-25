@@ -9,7 +9,7 @@ class Module extends Model
 {
     use HasFactory;
     protected $table='modules';
-    protected $fillable=['name','route','status','created_by'];
+    protected $fillable=['name','route','status','created_by','updated_by'];
 
     function permissions(){
         return $this->hasMany(Permission::class);

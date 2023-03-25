@@ -39,7 +39,7 @@ class EmployeeGradeScaleController extends Controller
         $EmployeeGradeScale->grade = $req->input('grade');
         $EmployeeGradeScale->position = $req->input('position');
         $EmployeeGradeScale->amount = $req->input('amount');
-        $EmployeeGradeScale->created_by =  $req->input('created_by');
+//        $EmployeeGradeScale->created_by =  $req->input('created_by');
         $EmployeeGradeScale->created_at = $date;
 
 

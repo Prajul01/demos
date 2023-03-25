@@ -12,5 +12,5 @@ class EducationYear extends Model
     protected $fillable=['name','created_by','from_date_eng',
         'to_date_eng',
         'from_date_nep',
-        'to_date_nep'];
+        'to_date_nep','updated_by','created_by',];
 }

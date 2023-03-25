@@ -40,7 +40,7 @@ class EmployeeGradeLimitController extends Controller
         $EmployeeGradeLimit->level = $req->input('level');
         $EmployeeGradeLimit->gradelimit = $req->input('gradelimit');
         $EmployeeGradeLimit->position = $req->input('position');
-        $EmployeeGradeLimit->created_by =  $req->input('created_by');
+//        $EmployeeGradeLimit->created_by =  $req->input('created_by');
         $EmployeeGradeLimit->created_at = $date;
 
 

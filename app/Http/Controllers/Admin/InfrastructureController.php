@@ -40,6 +40,8 @@ class InfrastructureController extends Controller
         $infrastructure->total = $req->input('total');
         $infrastructure->remark = $req->input('remark');
         $infrastructure->finacialyear = $req->input('finacialyear');
+        $infrastructure->generated_by = $req->input('generated_by');
+        $infrastructure->state = $req->input('state');
         $infrastructure->created_by =  'created_by';
 
         $infrastructure->created_at = $date;

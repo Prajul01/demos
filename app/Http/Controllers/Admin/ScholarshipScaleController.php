@@ -38,7 +38,7 @@ class ScholarshipScaleController extends Controller
         $ScholarshipScale->title = $req->input('title');
         $ScholarshipScale->class = $req->input('class');
         $ScholarshipScale->amount = $req->input('amount');
-        $ScholarshipScale->created_by =  $req->input('created_by');
+//        $ScholarshipScale->created_by =  $req->input('created_by');
         $ScholarshipScale->created_at = $date;
 
 

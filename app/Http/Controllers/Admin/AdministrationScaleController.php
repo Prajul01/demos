@@ -37,9 +37,9 @@ class AdministrationScaleController extends Controller
         $date = date('Y-m-d h:i:s');
         $AadministrationScale = new AadministrationScale();
         $AadministrationScale->level = $req->input('level');
-        $AadministrationScale->infrastructure = $req->input('infrastructure');
+//        $AadministrationScale->is_draft = $req->input('is_draft');
         $AadministrationScale->amount = $req->input('amount');
-        $AadministrationScale->created_by =  $req->input('created_by');
+//        $AadministrationScale->created_by =  $req->input('created_by');
         $AadministrationScale->created_at = $date;
 
 
@@ -94,15 +94,16 @@ class AdministrationScaleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $req, $id)
     {
 
         $AadministrationScale=AadministrationScale::find($id);
-        $AadministrationScale->updated_by =  '_by';
-        $AadministrationScale->update($request->all());
+//        $AadministrationScale->updated_by =  $req->input('updated_by');
+//        $AadministrationScale->updated_by =  '_by';
+        $AadministrationScale->update($req->all());
         return response()->json([
             "success" => true,
-            "message" => "AadministrationScale Cost updated",
+            "message" => "AadministrationScale  updated",
             "data" => $AadministrationScale
         ]);
 //
