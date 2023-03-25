@@ -15,13 +15,13 @@ return new class extends Migration
     {
         Schema::create('employee_grade_scale', function (Blueprint $table) {
             $table->id();
-            $table->string('level');
-            $table->string('position');
-            $table->string('grade');
-            $table->string('amount');
-            $table->string('created_by');
+            $table->string('level')->nullable();
+            $table->string('position')->nullable();
+            $table->string('grade')->nullable();
+            $table->string('amount')->nullable();
+            $table->string('created_by')->nullable();
             $table->string('updated_by')->nullable();
-            $table->boolean('delete_flg')->default('0');
+            $table->boolean('delete_flg')->nullable()->default('0');
             $table->boolean('is_draft')->default('0');
             $table->timestamps();
         });

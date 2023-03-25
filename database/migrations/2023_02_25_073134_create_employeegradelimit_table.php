@@ -15,12 +15,12 @@ return new class extends Migration
     {
         Schema::create('employeegradelimit', function (Blueprint $table) {
             $table->id();
-            $table->string('level');
-            $table->string('gradelimit');
-            $table->string('position');
-            $table->string('created_by');
+            $table->string('level')->nullable();
+            $table->string('gradelimit')->nullable();
+            $table->string('position')->nullable();
+            $table->string('created_by')->nullable();
             $table->string('updated_by')->nullable();
-            $table->boolean('delete_flg')->default('0');
+            $table->boolean('delete_flg')->nullable()->default('0');
             $table->boolean('is_draft')->default('0');
             $table->timestamps();
         });

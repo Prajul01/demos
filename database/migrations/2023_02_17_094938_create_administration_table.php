@@ -15,15 +15,15 @@ return new class extends Migration
     {
         Schema::create('administration', function (Blueprint $table) {
             $table->id();
-            $table->string('school');
-            $table->string('account');
-            $table->string('total');
-            $table->string('remark');
-            $table->string('finacialyear');
-            $table->string('grade');
-            $table->string('created_by');
+            $table->string('school')->nullable();
+            $table->string('account')->nullable();
+            $table->string('total')->nullable();
+            $table->string('remark')->nullable();
+            $table->string('finacialyear')->nullable();
+            $table->string('grade')->nullable();
+            $table->string('created_by')->nullable();
             $table->string('updated_by')->nullable();
-            $table->boolean('delete_flg')->default('0');
+            $table->boolean('delete_flg')->nullable()->default('0');
             $table->boolean('is_draft')->default('0');
             $table->timestamps();
         });

@@ -15,13 +15,14 @@ return new class extends Migration
     {
         Schema::create('roles', function (Blueprint $table) {
             $table->id();
-            $table->string('name',50);
+            $table->string('name',50)->nullable();
             $table->integer('key');
             $table->boolean('status')->default(0);
-            $table->unsignedBigInteger('created_by');
+            $table->unsignedBigInteger('created_by')->nullable();
             $table->unsignedBigInteger('updated_by')->nullable();
             $table->foreign('created_by')->references('id')->on('users');
             $table->foreign('updated_by')->references('id')->on('users');
+            $table->boolean('delete_flg')->nullable()->default('0');
             $table->timestamps();
         });
     }

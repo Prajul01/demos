@@ -15,13 +15,13 @@ return new class extends Migration
     {
         Schema::create('signature', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('post');
-            $table->string('signature');
-            $table->string('created_by');
-            $table->string('status');
+            $table->string('name')->nullable();
+            $table->string('post')->nullable();
+            $table->string('signature')->nullable();
+            $table->string('created_by')->nullable();
+            $table->string('status')->nullable();
             $table->string('updated_by')->nullable();
-            $table->boolean('delete_flg')->default('0');
+            $table->boolean('delete_flg')->nullable()->default('0');
             $table->boolean('is_draft')->default('0');
             $table->timestamps();
         });

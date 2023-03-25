@@ -15,12 +15,12 @@ return new class extends Migration
     {
         Schema::create('salarysheet', function (Blueprint $table) {
             $table->id();
-            $table->string('fiscalyear');
-            $table->string('month');
-            $table->string('created_by');
+            $table->string('fiscalyear')->nullable();
+            $table->string('month')->nullable();
+            $table->string('created_by')->nullable();
             $table->boolean('status')->default('0');
             $table->string('updated_by')->nullable();
-            $table->boolean('delete_flg')->default('0');
+            $table->boolean('delete_flg')->nullable()->default('0');
             $table->boolean('community_teacher')->default('0');
             $table->boolean('is_draft')->default('0');
             $table->timestamps();

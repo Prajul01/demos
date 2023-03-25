@@ -15,12 +15,12 @@ return new class extends Migration
     {
         Schema::create('lunch_scale', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->string('class');
-            $table->string('amount');
-            $table->string('created_by');
+            $table->string('title')->nullable();
+            $table->string('class')->nullable();
+            $table->string('amount')->nullable();
+            $table->string('created_by')->nullable();
             $table->string('updated_by')->nullable();
-            $table->boolean('delete_flg')->default('0');
+            $table->boolean('delete_flg')->nullable()->default('0');
             $table->boolean('is_draft')->default('0');
 
 
