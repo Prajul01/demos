@@ -9,5 +9,5 @@ class Infrastructure extends Model
 {
     use HasFactory;
     protected $table='infrastructure';
-    protected $fillable=['school','account','total','remark','finacialyear','created_by'];
+    protected $fillable=['school','account','total','remark','finacialyear','created_by','generated_by','state'];
 }

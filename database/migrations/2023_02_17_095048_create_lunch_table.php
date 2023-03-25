@@ -16,8 +16,11 @@ return new class extends Migration
         Schema::create('lunch', function (Blueprint $table) {
             $table->id();
             $table->string('school')->nullable();
-            $table->string('account')->nullable();
+            $table->string('total_students')->nullable();
+            $table->string('total_attendance')->nullable();
+            $table->string('rate')->nullable();
             $table->string('total')->nullable();
+            $table->string('remaining_total')->nullable();
             $table->string('remark')->nullable();
             $table->string('finacialyear')->nullable();
             $table->string('created_by')->nullable();

@@ -47,15 +47,15 @@ class ScholarshipController extends Controller
     {
 
         $input = $req->all();
-        $req->validate([
-//            $validator = Validated::make($req->all(), [
-                'school' => 'required',
-            'account' => 'required',
-            'total' => 'required',
-            'remark' => 'required',
-            'finacialyear' => 'required',
-            'created_by' => 'required',
-            ]);
+//        $req->validate([
+////            $validator = Validated::make($req->all(), [
+//                'school' => 'required',
+//            'account' => 'required',
+//            'total' => 'required',
+//            'remark' => 'required',
+//            'finacialyear' => 'required',
+//            'created_by' => 'required',
+//            ]);
 //        ]);
 
 

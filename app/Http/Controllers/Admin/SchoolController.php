@@ -79,6 +79,7 @@ class SchoolController extends Controller
         $School->bank_name = $req->input('bank_name');
         $School->account_no = $req->input('account_no');
         $School->status = $req->input('status');
+        $School->status = $req->input('moto');
         $School->created_by = $req->input('created_by');
         $School->delete_flg = $req->input('delete_flg');
         $School->is_draft = $req->input('is_draft');

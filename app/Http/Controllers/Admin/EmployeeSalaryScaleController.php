@@ -38,6 +38,8 @@ class EmployeeSalaryScaleController extends Controller
         $EmployeeSalaryScale->level = $req->input('level');
         $EmployeeSalaryScale->position = $req->input('position');
         $EmployeeSalaryScale->amount = $req->input('amount');
+        $EmployeeSalaryScale->center_amount = $req->input('center_amount');
+        $EmployeeSalaryScale->total_amount = $req->input('total_amount');
         $EmployeeSalaryScale->created_by =  $req->input('created_by');
         $EmployeeSalaryScale->created_at = $date;
 

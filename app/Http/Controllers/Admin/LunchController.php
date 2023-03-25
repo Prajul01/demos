@@ -33,16 +33,19 @@ class LunchController extends Controller
     {
 
         $input = $req->all();
-        $date = date('Y-m-d h:i:s');
-        $Lunch = new Lunch();
-        $Lunch->school = $req->input('school');
-        $Lunch->account = $req->input('account');
-        $Lunch->total = $req->input('total');
-        $Lunch->remark = $req->input('remark');
-        $Lunch->finacialyear = $req->input('finacialyear');
-        $Lunch->created_by =  'created_by';
+//        $date = date('Y-m-d h:i:s');
+//        $Lunch = new Lunch();
+        $Lunch = Lunch::create($req->all());
+//        $Lunch->total = $req->input('total');
+//        $Lunch->remark = $req->input('remark');
+//        $Lunch->finacialyear = $req->input('finacialyear');
+//        $Lunch->finacialyear = $req->input('total_students');
+//        $Lunch->finacialyear = $req->input('total_attendance');
+//        $Lunch->finacialyear = $req->input('remaining_total');
+//        $Lunch->finacialyear = $req->input('rate');
+//        $Lunch->created_by =  $req->input('created_by');
 
-        $Lunch->created_at = $date;
+//        $Lunch->created_at = $date;
 //        $Lunch->updated_at = $date;
 
 
@@ -96,12 +99,12 @@ class LunchController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $req, $id)
     {
 
         $Lunch=Lunch::find($id);
-        $Lunch->updated_by =  '_by';
-        $Lunch->update($request->all());
+        $Lunch->updated_by =  $req->input('created_by');
+        $Lunch->update($req->all());
         return response()->json([
             "success" => true,
             "message" => "Lunch Cost updated",

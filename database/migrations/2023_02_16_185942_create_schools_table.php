@@ -28,13 +28,14 @@ return new class extends Migration
             $table->string('school_phone')->nullable();
             $table->string('ward_no')->nullable();
             $table->string('school_level')->nullable();
-            $table->boolean('class_eight')->default('0');
+            $table->boolean('class_eight')->nullable()->default('0');
             $table->string('enroll_class')->nullable();
             $table->string('principal_no')->nullable();
             $table->string('principal_email')->nullable();
             $table->string('bank_name')->nullable();
             $table->string('account_no')->nullable();
-            $table->boolean('status')->default(0);
+            $table->string('moto')->nullable();
+            $table->boolean('status')->nullable()->default(0);
             $table->string('created_by')->nullable();
             $table->string('updated_by')->nullable();
             $table->boolean('delete_flg')->nullable()->default('0');

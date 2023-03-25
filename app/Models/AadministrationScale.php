@@ -9,5 +9,5 @@ class AadministrationScale extends Model
 {
     use HasFactory;
     protected $table='infrastructure_scale';
-    protected $fillable=['level','infrastructure','amount','created_by'];
+    protected $fillable=['title','class','amount','created_by'];
 }

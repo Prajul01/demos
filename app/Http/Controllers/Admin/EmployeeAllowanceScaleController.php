@@ -38,6 +38,7 @@ class EmployeeAllowanceScaleController extends Controller
         $EmployeeAllowanceScale->level = $req->input('level');
         $EmployeeAllowanceScale->title = $req->input('title');
         $EmployeeAllowanceScale->amount = $req->input('amount');
+        $EmployeeAllowanceScale->area = $req->input('area');
         $EmployeeAllowanceScale->created_by =  $req->input('created_by');
         $EmployeeAllowanceScale->created_at = $date;
 
@@ -93,12 +94,12 @@ class EmployeeAllowanceScaleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $req, $id)
     {
 
         $EmployeeAllowanceScale=EmployeeAllowanceScale::find($id);
-        $EmployeeAllowanceScale->updated_by =  '_by';
-        $EmployeeAllowanceScale->update($request->all());
+        $EmployeeAllowanceScale->updated_by =  $req->input('area');
+        $EmployeeAllowanceScale->update($req->all());
         return response()->json([
             "success" => true,
             "message" => "EmployeeAllowanceScale  updated",

@@ -36,8 +36,8 @@ class AdministrationScaleController extends Controller
         $input = $req->all();
         $date = date('Y-m-d h:i:s');
         $AadministrationScale = new AadministrationScale();
-        $AadministrationScale->title = $req->input('level');
-        $AadministrationScale->class = $req->input('amount');
+        $AadministrationScale->level = $req->input('level');
+        $AadministrationScale->infrastructure = $req->input('infrastructure');
         $AadministrationScale->amount = $req->input('amount');
         $AadministrationScale->created_by =  $req->input('created_by');
         $AadministrationScale->created_at = $date;

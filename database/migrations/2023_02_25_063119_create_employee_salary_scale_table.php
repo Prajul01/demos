@@ -18,6 +18,8 @@ return new class extends Migration
             $table->string('level')->nullable();
             $table->string('position')->nullable();
             $table->string('amount')->nullable();
+            $table->string('center_amount')->nullable();
+            $table->string('total_amount')->nullable();
             $table->string('created_by')->nullable();
             $table->string('updated_by')->nullable();
             $table->boolean('delete_flg')->nullable()->default('0');

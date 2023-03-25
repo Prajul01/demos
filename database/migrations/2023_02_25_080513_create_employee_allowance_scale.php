@@ -17,6 +17,8 @@ return new class extends Migration
             $table->id();
             $table->string('level')->nullable();
             $table->string('title')->nullable();
+            $table->string('area')->nullable();
+            $table->string('remark')->nullable();
             $table->string('amount')->nullable();
             $table->string('created_by')->nullable();
             $table->string('updated_by')->nullable();

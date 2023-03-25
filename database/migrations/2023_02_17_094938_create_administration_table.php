@@ -20,6 +20,8 @@ return new class extends Migration
             $table->string('total')->nullable();
             $table->string('remark')->nullable();
             $table->string('finacialyear')->nullable();
+            $table->string('generated_by')->nullable();
+            $table->string('state')->nullable();
             $table->string('grade')->nullable();
             $table->string('created_by')->nullable();
             $table->string('updated_by')->nullable();

@@ -17,11 +17,12 @@ return new class extends Migration
             $table->id();
             $table->string('fiscalyear')->nullable();
             $table->string('month')->nullable();
+            $table->string('header')->nullable();
             $table->string('created_by')->nullable();
-            $table->boolean('status')->default('0');
+            $table->boolean('status')->nullable()->default('0');
             $table->string('updated_by')->nullable();
             $table->boolean('delete_flg')->nullable()->default('0');
-            $table->boolean('community_teacher')->default('0');
+            $table->boolean('community_teacher')->nullable()->default('0');
             $table->boolean('is_draft')->default('0');
             $table->timestamps();
         });

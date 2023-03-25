@@ -69,7 +69,7 @@ class StudyMaterialController extends Controller
 
         if($scholarship->save()){
             $resp['success'] = true;
-            $resp['message'] = 'Scholarship saved';
+            $resp['message'] = 'Studymaterial saved';
             $resp['data']=$input;
             $resp['id']=$scholarship->id;
 
