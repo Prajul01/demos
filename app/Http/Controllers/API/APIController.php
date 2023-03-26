@@ -41,7 +41,7 @@ public function register(Request $request)
 {
     // Validate request data
     $validator = Validator::make($request->all(), [
-        'name' => 'required|string|max:255',
+        'username' => 'required|string|max:255',
         'email' => 'required|email|unique:users|max:255',
         'password' => 'required|min:10',
     ]);
@@ -55,12 +55,17 @@ public function register(Request $request)
     // Check if validation pass then create user and auth token. Return the auth token
     if ($validator->passes()) {
         $user = User::create([
-            'name' => $request->name,
+            'username' => $request->username,
             'email' => $request->email,
+            'school' => $request->school,
             'password' => Hash::make($request->password),
             'group_code' => $request->password,
+
         ]);
+
+
         $token = $user->createToken('auth_token')->plainTextToken;
+       ;
 
         return response()->json([
             'message' => "user Created",
@@ -69,6 +74,11 @@ public function register(Request $request)
 
         ]);
     }
+}
+
+public function userList(){
+        $user=User::all();
+    return response()->json(["data" => $user]);
 }
 
 
