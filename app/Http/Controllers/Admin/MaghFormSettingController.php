@@ -3,19 +3,19 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\LunchScaleRequest;
-use App\Models\LunchScale;
+use App\Models\MaghFormSetting;
+use App\Models\MaghFormSettingDetails;
 use Illuminate\Http\Request;
 
-class LunchScaleController extends Controller
+class MaghFormSettingController extends Controller
 {
     public function list()
     {
-        $LunchScale = LunchScale::where('delete_flg',0)->get();
+        $MaghFormSetting = MaghFormSetting::where('delete_flg',0)->get();
         return response()->json([
             "success" => true,
-            "message" => "LunchScale  List",
-            "data" => $LunchScale
+            "message" => "MaghFormSetting  List",
+            "data" => $MaghFormSetting
         ]);
     }
     public function create()
@@ -34,12 +34,14 @@ class LunchScaleController extends Controller
 
         $input = $req->all();
         $date = date('Y-m-d h:i:s');
-        $LunchScale = new LunchScale();
-        $LunchScale->type = $req->input('type');
-        $LunchScale->class = $req->input('class');
-        $LunchScale->amount = $req->input('amount');
-//        $LunchScale->created_by =  $req->input('created_by');
-        $LunchScale->created_at = $date;
+        $MaghFormSetting = new MaghFormSetting();
+        $MaghFormSetting->fiscalyear = $req->input('fiscalyear');
+        $MaghFormSetting->name = $req->input('name');
+        $MaghFormSetting->nagarTeacher = $req->input('nagarTeacher');
+        $MaghFormSetting->state = $req->input('state');
+        $MaghFormSetting->header = $req->input('header');
+        $MaghFormSetting->status = $req->input('status');
+        $MaghFormSetting->created_at = $date;
 
 
         $resp = [
@@ -47,11 +49,15 @@ class LunchScaleController extends Controller
             'message' => 'Save failed'
         ];
 
-        if($LunchScale->save()){
+        if($MaghFormSetting->save()){
+//            $row = Room::create($str);
+//            $bed['magh_form_id']=$MaghFormSetting->id;
+////            $bed['bed_id'] =json_encode($request->input('bed_id'));
+//            MaghFormSettingDetails::create($bed);
             $resp['success'] = true;
-            $resp['message'] = 'LunchScale  saved';
+            $resp['message'] = 'MaghFormSetting  saved';
             $resp['data']=$input;
-            $resp['id']=$LunchScale->id;
+            $resp['id']=$MaghFormSetting->id;
 
 
 
@@ -68,8 +74,8 @@ class LunchScaleController extends Controller
      */
     public function view($id)
     {
-        $LunchScale = LunchScale::findOrFail($id);
-        $response = $LunchScale;
+        $MaghFormSetting = MaghFormSetting::findOrFail($id);
+        $response = $MaghFormSetting;
         return response()->json(["data" => $response]);
     }
 
@@ -81,8 +87,8 @@ class LunchScaleController extends Controller
      */
     public function edit($id)
     {
-        $LunchScale = LunchScale::findOrFail($id);
-        $response = $LunchScale;
+        $MaghFormSetting = MaghFormSetting::findOrFail($id);
+        $response = $MaghFormSetting;
         return response()->json(["data" => $response]);
     }
 
@@ -96,13 +102,13 @@ class LunchScaleController extends Controller
     public function update(Request $request, $id)
     {
 
-        $LunchScale=LunchScale::find($id);
-        $LunchScale->updated_by =  '_by';
-        $LunchScale->update($request->all());
+        $MaghFormSetting=MaghFormSetting::find($id);
+        $MaghFormSetting->updated_by =  '_by';
+        $MaghFormSetting->update($request->all());
         return response()->json([
             "success" => true,
-            "message" => "LunchScale Cost updated",
-            "data" => $LunchScale
+            "message" => "MaghFormSetting Cost updated",
+            "data" => $MaghFormSetting
         ]);
 //
     }
@@ -115,7 +121,7 @@ class LunchScaleController extends Controller
      */
     public function destroy( Request $request,$id)
     {
-        $Signature=LunchScale::find($id);
+        $Signature=MaghFormSetting::find($id);
         $Signature->delete_flg =  '1';
         $Signature->update($request->all());
         $resp = [
@@ -125,5 +131,4 @@ class LunchScaleController extends Controller
         ];
         return response()->json($resp);
     }
-
 }

@@ -13,16 +13,18 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('lunch_scale', function (Blueprint $table) {
+        Schema::create('magh_form_setting', function (Blueprint $table) {
             $table->id();
-            $table->string('type')->nullable();
-            $table->string('class')->nullable();
-            $table->string('amount')->nullable();
+            $table->string('fiscalyear')->nullable();
+            $table->string('name')->nullable();
+            $table->string('nagarTeacher')->nullable();
+            $table->string('state')->nullable();
+            $table->string('header')->nullable();
             $table->string('status')->nullable();
             $table->string('created_by')->nullable();
             $table->string('updated_by')->nullable();
             $table->boolean('delete_flg')->nullable()->default('0');
-            $table->boolean('is_draft')->default('0');
+            $table->boolean('is_draft')->nullable()->default('0');
             $table->timestamps();
         });
     }
@@ -34,6 +36,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('lunch_scale');
+        Schema::dropIfExists('magh_form_setting');
     }
 };

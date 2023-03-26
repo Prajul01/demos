@@ -22,6 +22,7 @@ use App\Http\Controllers\Admin\SignatureController;
 use App\Http\Controllers\Admin\SalarySheetController;
 use App\Http\Controllers\Admin\FiscalYearController;
 use App\Http\Controllers\Admin\EducationYearController;
+use App\Http\Controllers\Admin\MaghFormSettingDetailsController;
 
 
 /*
@@ -165,3 +166,16 @@ Route::post('educationyear/update/{id}',[EducationYearController::class,'update'
 Route::get('educationyear/view/{id}',[EducationYearController::class,'view']);
 Route::post('educationyear/delete/{id}',[EducationYearController::class,'destroy']);
 Route::post('educationyear/save',[EducationYearController::class,'store']);
+
+Route::get('maghformsetting/list',[\App\Http\Controllers\Admin\MaghFormSettingController::class,'list']);
+Route::post('maghformsetting/update/{id}',[\App\Http\Controllers\Admin\MaghFormSettingController::class,'update']);
+Route::get('maghformsetting/view/{id}',[\App\Http\Controllers\Admin\MaghFormSettingController::class,'view']);
+Route::post('maghformsetting/delete/{id}',[\App\Http\Controllers\Admin\MaghFormSettingController::class,'destroy']);
+Route::post('maghformsetting/save',[\App\Http\Controllers\Admin\MaghFormSettingController::class,'store']);
+
+
+Route::get('maghformsettingDetails/list',[MaghFormSettingDetailsController::class,'list']);
+Route::post('maghformsettingDetails/update/{id}',[MaghFormSettingDetailsController::class,'update']);
+Route::get('maghformsettingDetails/view/{id}',[MaghFormSettingDetailsController::class,'view']);
+Route::post('maghformsettingDetails/delete/{id}',[MaghFormSettingDetailsController::class,'destroy']);
+Route::post('maghformsettingDetails/save',[MaghFormSettingDetailsController::class,'store']);

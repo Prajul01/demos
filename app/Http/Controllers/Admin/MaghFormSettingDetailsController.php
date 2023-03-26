@@ -3,19 +3,17 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\LunchScaleRequest;
-use App\Models\LunchScale;
 use Illuminate\Http\Request;
 
-class LunchScaleController extends Controller
+class MaghFormSettingDetailsController extends Controller
 {
     public function list()
     {
-        $LunchScale = LunchScale::where('delete_flg',0)->get();
+        $MaghFormSettingDetails = MaghFormSettingDetailsDetails::where('delete_flg',0)->get();
         return response()->json([
             "success" => true,
-            "message" => "LunchScale  List",
-            "data" => $LunchScale
+            "message" => "MaghFormSettingDetails  List",
+            "data" => $MaghFormSettingDetails
         ]);
     }
     public function create()
@@ -34,24 +32,28 @@ class LunchScaleController extends Controller
 
         $input = $req->all();
         $date = date('Y-m-d h:i:s');
-        $LunchScale = new LunchScale();
-        $LunchScale->type = $req->input('type');
-        $LunchScale->class = $req->input('class');
-        $LunchScale->amount = $req->input('amount');
-//        $LunchScale->created_by =  $req->input('created_by');
-        $LunchScale->created_at = $date;
+        $MaghFormSettingDetails = new MaghFormSettingDetails();
+        $MaghFormSettingDetails->magh_form_id = $req->input('magh_form_id');
+        $MaghFormSettingDetails->month = $req->input('month');
+        $MaghFormSettingDetails->name = $req->input('name');
+        $MaghFormSettingDetails->type = $req->input('type');
+        $MaghFormSettingDetails->visible = $req->input('visible');
+        $MaghFormSettingDetails->status = $req->input('status');
 
 
         $resp = [
             'success' => false,
             'message' => 'Save failed'
         ];
-
-        if($LunchScale->save()){
+        if($MaghFormSettingDetails->save()){
+//            $row = Room::create($str);
+//            $bed['magh_form_id']=$MaghFormSettingDetails->id;
+////            $bed['bed_id'] =json_encode($request->input('bed_id'));
+//            MaghFormSettingDetailsDetails::create($bed);
             $resp['success'] = true;
-            $resp['message'] = 'LunchScale  saved';
+            $resp['message'] = 'MaghFormSettingDetails  saved';
             $resp['data']=$input;
-            $resp['id']=$LunchScale->id;
+            $resp['id']=$MaghFormSettingDetails->id;
 
 
 
@@ -68,8 +70,8 @@ class LunchScaleController extends Controller
      */
     public function view($id)
     {
-        $LunchScale = LunchScale::findOrFail($id);
-        $response = $LunchScale;
+        $MaghFormSettingDetails = MaghFormSettingDetails::findOrFail($id);
+        $response = $MaghFormSettingDetails;
         return response()->json(["data" => $response]);
     }
 
@@ -81,8 +83,8 @@ class LunchScaleController extends Controller
      */
     public function edit($id)
     {
-        $LunchScale = LunchScale::findOrFail($id);
-        $response = $LunchScale;
+        $MaghFormSettingDetails = MaghFormSettingDetails::findOrFail($id);
+        $response = $MaghFormSettingDetails;
         return response()->json(["data" => $response]);
     }
 
@@ -96,13 +98,13 @@ class LunchScaleController extends Controller
     public function update(Request $request, $id)
     {
 
-        $LunchScale=LunchScale::find($id);
-        $LunchScale->updated_by =  '_by';
-        $LunchScale->update($request->all());
+        $MaghFormSettingDetails=MaghFormSettingDetails::find($id);
+        $MaghFormSettingDetails->updated_by =  '_by';
+        $MaghFormSettingDetails->update($request->all());
         return response()->json([
             "success" => true,
-            "message" => "LunchScale Cost updated",
-            "data" => $LunchScale
+            "message" => "MaghFormSettingDetails Cost updated",
+            "data" => $MaghFormSettingDetails
         ]);
 //
     }
@@ -115,7 +117,7 @@ class LunchScaleController extends Controller
      */
     public function destroy( Request $request,$id)
     {
-        $Signature=LunchScale::find($id);
+        $Signature=MaghFormSettingDetails::find($id);
         $Signature->delete_flg =  '1';
         $Signature->update($request->all());
         $resp = [
@@ -125,5 +127,4 @@ class LunchScaleController extends Controller
         ];
         return response()->json($resp);
     }
-
 }
