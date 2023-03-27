@@ -7,6 +7,7 @@ use App\Http\Requests\EmployeeRequest;
 use App\Models\Employee;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class EmployeeController extends Controller
 {
@@ -176,5 +177,22 @@ class EmployeeController extends Controller
             'data'=>$Signature,
         ];
         return response()->json($resp);
+    }
+
+
+
+    public function search(Request $request)
+    {
+        $filters = $request->only(['gender', 'type', 'position', 'school_name', 'level']);
+
+        $results = Employee::query();
+
+        foreach ($filters as $key => $value) {
+            if ($value) {
+                $results = $results->whereRaw("LOWER($key) = LOWER(?)", [$value]);
+            }
+        }
+
+        return response()->json($results->get());
     }
 }

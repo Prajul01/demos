@@ -9,6 +9,6 @@ class SchoolLevel extends Model
 {
     use HasFactory;
     protected $table='school_level';
-    protected $fillable=['school_name','account_number','amount','remark','form_name','form_type','created_by' ,
+    protected $fillable=['school_name','report','account_number','amount','remark','form_name','form_type','created_by' ,
         'updated_by' ];
 }

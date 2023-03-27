@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\AdministrationRequest;
 use App\Models\Administration;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class AdministrationController extends Controller
 {
@@ -48,9 +49,10 @@ class AdministrationController extends Controller
         $administration = new Administration();
         $administration->school = $req->input('school');
         $administration->account = $req->input('account');
-        $administration->total = $req->input('total');
+        $administration->amount = $req->input('amount');
         $administration->remark = $req->input('remark');
         $administration->grade = $req->input('grade');
+        $administration->statestatus = $req->input('statestatus');
         $administration->finacialyear = $req->input('finacialyear');
         $administration->generated_by = $req->input('generated_by');
         $administration->state = $req->input('state');
@@ -149,5 +151,35 @@ class AdministrationController extends Controller
             'data'=>$Signature,
         ];
         return response()->json($resp);
+    }
+
+//    public function search(Request $request){
+//        $finacialyear = $request->input('finacialyear');
+//        $generated_by = $request->input('generated_by');
+//        $state = $request->input('state');
+//        $statestatus = $request->input('statestatus');
+//
+//        $results = DB::table('administration')
+//            ->where('finacialyear', '=', $finacialyear)
+//            ->where('generated_by', '=', $generated_by)
+//            ->where('state', '=', $state)
+//            ->where('statestatus', '=', $statestatus)
+//            ->get();
+//
+//        return response()->json($results);
+//    }
+    public function search(Request $request)
+    {
+        $filters = $request->only(['finacialyear','generated_by','state','statestatus']);
+
+        $results = Administration::query();
+
+        foreach ($filters as $key => $value) {
+            if ($value) {
+                $results = $results->whereRaw("LOWER($key) = LOWER(?)", [$value]);
+            }
+        }
+
+        return response()->json($results->get());
     }
 }

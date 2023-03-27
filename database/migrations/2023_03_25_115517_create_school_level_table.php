@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('remark')->nullable();
             $table->string('form_name')->nullable();
             $table->string('form_type')->nullable();
+            $table->string('report')->nullable();
             $table->string('created_by')->nullable();
             $table->string('updated_by')->nullable();
             $table->boolean('delete_flg')->nullable()->default('0');

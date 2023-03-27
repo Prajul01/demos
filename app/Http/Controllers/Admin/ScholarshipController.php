@@ -8,6 +8,7 @@ use App\Models\Scholarship;
 use Dotenv\Validator;
 use Illuminate\Auth\Events\Validated;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ScholarshipController extends Controller
 {
@@ -172,5 +173,20 @@ class ScholarshipController extends Controller
             'data'=>$Signature,
         ];
         return response()->json($resp);
+    }
+
+    public function search(Request $request)
+    {
+        $filters = $request->only(['year']);
+
+        $results = Scholarship::query();
+
+        foreach ($filters as $key => $value) {
+            if ($value) {
+                $results = $results->whereRaw("LOWER($key) = LOWER(?)", [$value]);
+            }
+        }
+
+        return response()->json($results->get());
     }
 }

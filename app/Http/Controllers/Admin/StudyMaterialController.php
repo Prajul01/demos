@@ -8,6 +8,7 @@ use App\Http\Requests\StudyMaterialRequest;
 use App\Models\StudyMaterial;
 use GuzzleHttp\Promise\Create;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class StudyMaterialController extends Controller
 {
@@ -155,5 +156,19 @@ class StudyMaterialController extends Controller
             'data'=>$Signature,
         ];
         return response()->json($resp);
+    }
+    public function search(Request $request)
+    {
+        $filters = $request->only(['educationyear','generated_by','state','statestatus']);
+
+        $results = StudyMaterial::query();
+
+        foreach ($filters as $key => $value) {
+            if ($value) {
+                $results = $results->whereRaw("LOWER($key) = LOWER(?)", [$value]);
+            }
+        }
+
+        return response()->json($results->get());
     }
 }

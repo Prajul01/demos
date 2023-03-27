@@ -23,6 +23,8 @@ use App\Http\Controllers\Admin\SalarySheetController;
 use App\Http\Controllers\Admin\FiscalYearController;
 use App\Http\Controllers\Admin\EducationYearController;
 use App\Http\Controllers\Admin\MaghFormSettingDetailsController;
+use App\Http\Controllers\Admin\AuditController;
+use App\Http\Controllers\Admin\SchoolLevelController;
 
 
 /*
@@ -52,6 +54,8 @@ Route::post('employee/save', [EmployeeController::class, 'store']);
 Route::post('employee/update/{id}', [EmployeeController::class, 'update']);
 Route::get('employee/view/{id}', [EmployeeController::class, 'view']);
 Route::post('employee/delete/{id}', [EmployeeController::class, 'destroy']);
+Route::get('employee/search',[EmployeeController::class,'search']);
+
 
 
 
@@ -66,30 +70,40 @@ Route::post('scholarship/update/{id}',[ScholarshipController::class,'update']);
 Route::get('scholarship/view/{id}',[ScholarshipController::class,'view']);
 Route::post('scholarship/delete/{id}',[ScholarshipController::class,'destroy']);
 Route::post('scholarship/save',[ScholarshipController::class,'store']);
+Route::get('scholarship/search',[ScholarshipController::class,'search']);
+
 //
 Route::get('studymaterial/list',[StudyMaterialController::class,'list']);
 Route::post('studymaterial/update/{id}',[StudyMaterialController::class,'update']);
 Route::get('studymaterial/view/{id}',[StudyMaterialController::class,'view']);
 Route::post('studymaterial/delete/{id}',[StudyMaterialController::class,'destroy']);
 Route::post('studymaterial/save',[StudyMaterialController::class,'store']);
+Route::get('studymaterial/search',[StudyMaterialController::class,'search']);
+
 //
 Route::get('administration/list',[AdministrationController::class,'list']);
 Route::post('administration/update/{id}',[AdministrationController::class,'update']);
 Route::get('administration/view/{id}',[AdministrationController::class,'view']);
 Route::post('administration/delete/{id}',[AdministrationController::class,'destroy']);
 Route::post('administration/save',[AdministrationController::class,'store']);
+Route::get('administration/search',[AdministrationController::class,'search']);
+
 ////
 Route::get('infrastructure/list',[InfrastructureController::class,'list']);
 Route::post('infrastructure/update/{id}',[InfrastructureController::class,'update']);
 Route::get('infrastructure/view/{id}',[InfrastructureController::class,'view']);
 Route::post('infrastructure/delete/{id}',[InfrastructureController::class,'destroy']);
 Route::post('infrastructure/save',[InfrastructureController::class,'store']);
+Route::get('infrastructure/search',[InfrastructureController::class,'search']);
+
 //
 Route::get('lunch/list',[LunchController::class,'list']);
 Route::post('lunch/update/{id}',[LunchController::class,'update']);
 Route::get('lunch/view/{id}',[LunchController::class,'view']);
 Route::post('lunch/delete/{id}',[LunchController::class,'destroy']);
 Route::post('lunch/save',[LunchController::class,'store']);
+//Route::get('lunch/search',[LunchController::class,'search']);
+
 //
 //Route::resource('employeegrade',[EmployeegradeController::class,'list']);//not used anywhere
 //Route::get('employeegrade_recycle',[EmployeegradeController::class,'recycle']);//test of soft delete
@@ -179,3 +193,24 @@ Route::post('maghformsettingDetails/update/{id}',[MaghFormSettingDetailsControll
 Route::get('maghformsettingDetails/view/{id}',[MaghFormSettingDetailsController::class,'view']);
 Route::post('maghformsettingDetails/delete/{id}',[MaghFormSettingDetailsController::class,'destroy']);
 Route::post('maghformsettingDetails/save',[MaghFormSettingDetailsController::class,'store']);
+
+
+Route::get('audit/list',[AuditController::class,'list']);
+Route::post('audit/update/{id}',[AuditController::class,'update']);
+Route::get('audit/view/{id}',[AuditController::class,'view']);
+Route::post('audit/delete/{id}',[AuditController::class,'destroy']);
+Route::post('audit/save',[AuditController::class,'store']);
+Route::get('audit/search',[AuditController::class,'search']);
+
+
+
+
+//maghform(talab)->bastabik/anusar talab
+Route::get('leavewise/list',[SchoolLevelController::class,'list']);
+Route::post('leavewise/update/{id}',[SchoolLevelController::class,'update']);
+Route::get('leavewise/view/{id}',[SchoolLevelController::class,'view']);
+Route::post('leavewise/delete/{id}',[SchoolLevelController::class,'destroy']);
+Route::post('leavewise/save',[SchoolLevelController::class,'store']);
+Route::get('leavewise/search',[SchoolLevelController::class,'search']);
+
+

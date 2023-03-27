@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\InfrastructureRequest;
 use App\Models\Infrastructure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class InfrastructureController extends Controller
 {
@@ -37,12 +38,13 @@ class InfrastructureController extends Controller
         $infrastructure = new Infrastructure();
         $infrastructure->school = $req->input('school');
         $infrastructure->account = $req->input('account');
-        $infrastructure->total = $req->input('total');
+        $infrastructure->amount = $req->input('amount');
         $infrastructure->remark = $req->input('remark');
         $infrastructure->finacialyear = $req->input('finacialyear');
         $infrastructure->generated_by = $req->input('generated_by');
         $infrastructure->state = $req->input('state');
-        $infrastructure->created_by =  'created_by';
+        $infrastructure->statestatus = $req->input('statestatus');
+
 
         $infrastructure->created_at = $date;
 //        $infrastructure->updated_at = $date;
@@ -138,5 +140,21 @@ class InfrastructureController extends Controller
             'data'=>$Signature,
         ];
         return response()->json($resp);
+    }
+
+
+        public function search(Request $request)
+    {
+        $filters = $request->only(['finacialyear','generated_by','state','statestatus']);
+
+        $results = Infrastructure::query();
+
+        foreach ($filters as $key => $value) {
+            if ($value) {
+                $results = $results->whereRaw("LOWER($key) = LOWER(?)", [$value]);
+            }
+        }
+
+        return response()->json($results->get());
     }
 }

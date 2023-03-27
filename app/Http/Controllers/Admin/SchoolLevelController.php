@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\SchoolLevel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class SchoolLevelController extends Controller
 {
@@ -119,5 +120,21 @@ class SchoolLevelController extends Controller
             'data'=>$SchoolLevel,
         ];
         return response()->json($resp);
+    }
+
+
+    public function search(Request $request)
+    {
+        $filters = $request->only(['form_name', 'form_type', 'report']);
+
+        $results = SchoolLevel::query();
+
+        foreach ($filters as $key => $value) {
+            if ($value) {
+                $results = $results->whereRaw("LOWER($key) = LOWER(?)", [$value]);
+            }
+        }
+
+        return response()->json($results->get());
     }
 }

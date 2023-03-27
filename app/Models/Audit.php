@@ -9,5 +9,5 @@ class Audit extends Model
 {
     use HasFactory;
     protected $table='audit';
-    protected $fillable=['school_name','magform','dataentry','headteacher','account','is_apprived','remark','form_name','updated_by','created_by',];
+    protected $fillable=['school_name','account','magform','dataentry','headteacher','account','is_apprived','remark','form_name','updated_by','created_by',];
 }

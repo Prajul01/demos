@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('magform')->nullable();
             $table->string('dataentry')->nullable();
             $table->string('headteacher')->nullable();
+            $table->string('account')->nullable();
             $table->string('is_aproved')->nullable();
             $table->string('remark')->nullable();
             $table->string('form_name')->nullable();

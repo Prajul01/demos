@@ -3,13 +3,26 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\MaghFormSettingDetails;
 use Illuminate\Http\Request;
 
 class MaghFormSettingDetailsController extends Controller
 {
-    public function list()
+//    public function list()
+//    {
+//        $MaghFormSettingDetails = MaghFormSettingDetailsDetails::where('delete_flg',0)->get();
+//        return response()->json([
+//            "success" => true,
+//            "message" => "MaghFormSettingDetails  List",
+//            "data" => $MaghFormSettingDetails
+//        ]);
+//    }
+    public function list(Request $req)
     {
-        $MaghFormSettingDetails = MaghFormSettingDetailsDetails::where('delete_flg',0)->get();
+        $MaghFormSettingDetails = MaghFormSettingDetails::where('delete_flg',0)->get();
+        if($req->magh_form_id){
+            $MaghFormSettingDetails = MaghFormSettingDetails::where('delete_flg',0)->where('magh_form_id',$req->magh_form_id)->get();
+        }
         return response()->json([
             "success" => true,
             "message" => "MaghFormSettingDetails  List",

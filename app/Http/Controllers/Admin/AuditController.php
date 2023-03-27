@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Audit;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class AuditController extends Controller
 {
@@ -119,5 +120,21 @@ class AuditController extends Controller
             'data'=>$Audit,
         ];
         return response()->json($resp);
+    }
+
+
+    public function search(Request $request)
+    {
+        $filters = $request->only(['magform']);
+
+        $results = Audit::query();
+
+        foreach ($filters as $key => $value) {
+            if ($value) {
+                $results = $results->whereRaw("LOWER($key) = LOWER(?)", [$value]);
+            }
+        }
+
+        return response()->json($results->get());
     }
 }
