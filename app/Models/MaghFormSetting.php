@@ -9,5 +9,5 @@ class MaghFormSetting extends Model
 {
     use HasFactory;
     protected $table='magh_form_setting';
-    protected $fillable=['fiscalyear','name','status','nagarTeacher','state','header','created_by','updated_by','delete_flg','is_draft'];
+    protected $fillable=['fiscalyear','name','status','nagarTeacher','state','header','created_by','updated_by','delete_flg','is_draft','magh_form_detail_ids'];
 }

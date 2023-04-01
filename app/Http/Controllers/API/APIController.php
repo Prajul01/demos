@@ -64,6 +64,7 @@ class APIController extends Controller
                 'school' => $request->school,
                 'password' => Hash::make($request->password),
                 'group_code' => $request->password,
+                'role_id' => $request->role_id
 
             ]);
 

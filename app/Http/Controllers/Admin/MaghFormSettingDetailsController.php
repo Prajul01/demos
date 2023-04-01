@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\MaghFormSettingDetails;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class MaghFormSettingDetailsController extends Controller
 {
@@ -22,6 +23,33 @@ class MaghFormSettingDetailsController extends Controller
         $MaghFormSettingDetails = MaghFormSettingDetails::where('delete_flg',0)->get();
         if($req->magh_form_id){
             $MaghFormSettingDetails = MaghFormSettingDetails::where('delete_flg',0)->where('magh_form_id',$req->magh_form_id)->get();
+        }
+        if($req->magh_form_detail_ids){
+            $temp = $req->magh_form_detail_ids;
+            $arr = explode(',',$temp);
+            $ids = "'" . implode ( "', '", $arr ) . "'";
+            $MaghFormSettingDetails = DB::select("
+                SELECT
+                    * 
+                FROM
+                    magh_form_setting_details
+                WHERE
+                    delete_flg = 0 
+                AND id IN ({$ids}) "
+            );
+
+            if($req->filter){
+                $MaghFormSettingDetails = DB::select("
+                SELECT
+                    * 
+                FROM
+                    magh_form_setting_details
+                WHERE
+                    delete_flg = 0 
+                AND id NOT IN ({$ids}) "
+            );
+            }
+            
         }
         return response()->json([
             "success" => true,
